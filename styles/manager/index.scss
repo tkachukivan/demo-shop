@@ -1,0 +1,14 @@
+.manager-graphics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.87rem;
+
+    @media(max-width: $mobile) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.manager-graphic {
+    max-width: 100%;
+}
+

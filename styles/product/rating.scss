@@ -1,0 +1,38 @@
+.rating-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem 1.25rem;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+}
+
+.rating {
+    position: relative;
+}
+
+.rating::before {
+    content: '';
+    display: block;
+    width: 5.75rem;
+    height: 1rem;
+    @include background-img("star-inactive.svg", auto 1rem, repeat-x);
+}
+
+.rating::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 0;
+    height: 1rem;
+    @include background-img("star-active.svg", auto 1rem, repeat-x);
+}
+
+$stars: (1, 1.06rem), (2, 2.18rem), (3, 3.3rem), (4, 4.42rem), (5, 5.64rem);
+
+@each $i, $width in $stars {
+    .rating--#{$i}::after {
+        width: $width;
+    }
+}

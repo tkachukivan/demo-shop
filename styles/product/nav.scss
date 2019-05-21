@@ -1,0 +1,20 @@
+.product-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    color: white;
+
+    &__link {
+        font-weight: bold;
+        color: white;
+    }
+    
+    &__category {
+        margin: 0;
+    }
+    
+    &__category span {
+        font-weight: bold;
+    }
+}

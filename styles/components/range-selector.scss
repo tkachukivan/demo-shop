@@ -1,0 +1,37 @@
+.range-input {
+    margin: 10px 0 22px 0;
+
+    &__label {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+    background: #B8B8B8;
+}
+
+.ui-slider-horizontal {
+    height: 2px;
+}
+
+.ui-slider-range {
+    background: $base-green;
+}
+
+.ui-widget-content .ui-slider-handle {
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: $base-green;
+}
+
+.ui-widget-content .ui-state-active {
+    color: inherit;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    top: -0.5em;
+}

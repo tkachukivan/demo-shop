@@ -1,0 +1,15 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(28.75rem, auto);
+    grid-gap: 1.87rem 1.87rem;
+
+    @media(max-width: $laptop) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media(max-width: $mobile) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+

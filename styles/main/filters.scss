@@ -1,0 +1,30 @@
+.filters {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1.25rem;
+
+    @media (max-width: $mobile) {
+        justify-content: space-between;
+    }
+
+    &__options {
+        margin-right: 1rem;
+    }
+    
+    &__search {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0.62rem;
+            right: 0.62rem;
+            display: block;
+            width: 1.25rem;
+            height: 1.25rem;
+            @include background-img("search.svg");
+        }
+    }
+}
