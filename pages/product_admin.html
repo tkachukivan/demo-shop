@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/style.css">
+    <title>product admin</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header-wrapper">
+            <div class="header page-container">
+                <h1 class="header__logo">
+                    <a href="../">
+                        <img src="../img/logo.svg" alt="logo">
+                    </a>
+                </h1>
+    
+                <div class="header__user">
+                    <div class="header__user-name">
+                        Hello, <span>John_Doe</span> 
+                    </div>
+                    <button class="header__user-logout"></button>
+                </div>
+            </div>
+        </header>
+        <main class="page-container page-container--main">
+            <nav class="product-nav">
+                <a href="./main.html" class="product-nav__link">Back</a>
+                <p class="product-nav__category">
+                    Category: <span>Man / Active wear</span>
+                </p>
+            </nav>
+            <div class="product-item product-item--extented-view ">
+                <div class="product-item__image-wrapper">
+                    <img src="../img/classic-close-up-clothes.jpg" class="product-item__image" alt="product-item-image"/>
+                  
+                    <div class="rating-wrapper">
+                        <div class="rating rating--5"></div>
+                    </div>
+                </div>
+                <div class="product-item__information-wrapper">
+                    <div>
+                        <h2 class="product-item__title">
+                            Active Coat Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.3
+                        </h2>
+                        <p class="product-item__description">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam, libero 
+                            aliquid architecto ad quis maiores sit nulla officiis ex velit sapiente autem fugit 
+                            quam, qui reprehenderit veniam fugiat nemo exercitationem cum minus ipsa 
+                            consequuntur. Pariatur totam suscipit, voluptatibus laudantium.
+                        </p>
+                        <p class="product-item__description">
+                            You can
+                            <button class="button-link button-add">add 5 more</button>.
+                            You can also
+                            <button class="button-link button-edit">edit</button>
+                            details or
+                            <button class="button-link button-delete">delete</button>
+                            them.
+                        </p>
+                    </div>
+                    <div class="product-item__information">
+                        <div class="product-item__price">
+                            <span class="product-item__price-currency">$</span>47.95
+                            <span class="product-item__left">(9 items left)</span>
+                        </div>
+                        <button class="button button-buy">
+                            Buy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="modal-wrapper buy-modal">
+            <div class="modal">
+                <div class="modal__header">
+                    Thank you!
+                </div>
+                <div class="modal__body">You successfully purchased this item.</div>
+                <div class="modal__footer">
+                    <button class="button button--autosize button--big">Continue shopping</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-wrapper delete-modal">
+            <div class="modal">
+                <div class="modal__header">
+                    Are you sure?
+                </div>
+                <div class="modal__body">
+                    You are trying to delete this product. Are you sure you want this?
+                </div>
+                <div class="modal__footer">
+                    <button class="button button--secondary button--big">Cancel</button>
+                    <button class="button button--big">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-wrapper edit-modal">
+            <div class="modal">
+                <h3 class="modal__header">
+                    Edit “Active Coat Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.3
+                </h3>
+                <div class="modal__body product-edit-modal">
+                    <div>
+                        <section class="product-edit-modal-section">
+                            <label for="product-name">Name:</label>
+                            <input type="text"
+                                    class="text-field"
+                                    id="product-name">
+                        </section>
+    
+                        <section class="product-edit-modal-section">
+                            <label>Category:</label>
+                            <div class="select-wrapper select-wrapper--white">
+                                <select name="" id="" class="select">
+                                    <option value="active">Active wear</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </section>
+    
+                        <section class="product-edit-modal-section">
+                            <label>Gender:</label>
+                            <div class="radio-buttons-wrapper">
+                                <input type="radio" id="gender-man" class="radio-button__input" name="gender" checked>
+                                <label for="gender-man" class="radio-button__label">Man</label>
+    
+                                <input type="radio" id="gender-woman" class="radio-button__input" name="gender">
+                                <label for="gender-woman" class="radio-button__label">Woman</label>
+    
+                                <input type="radio" id="gender-unisex" class="radio-button__input" name="gender">
+                                <label for="gender-unisex" class="radio-button__label">Unisex</label>
+                            </div>
+                        </section>
+                        
+                        <section class="product-edit-modal-section">
+                            <label>Description:</label>
+                            <textarea rows="10" class="text-field"></textarea>
+                        </section>
+                    </div>
+                    
+                    <div>
+                        <section class="product-edit-modal-section">
+                            <div>
+                                <label for="product-name">Link to image:</label>
+                                <input type="text"
+                                        class="text-field"
+                                        id="product-name">
+                            </div>
+                        </section>
+                        <section class="product-edit-modal-section">
+                            <img width="100%" src="../img/classic-close-up-clothes.jpg" alt="clothes">
+                        </section>
+                        <section class="product-edit-modal-section">
+                            <label for="product-name">Price:</label>
+                            <input type="text"
+                                    class="text-field"
+                                    id="product-name">
+                        </section>
+                        <section class="product-edit-modal-section">
+                            <label>Rating:</label>
+                            <div class="select-wrapper select-wrapper--white">
+                                <select name="" id="" class="select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5" selected>5</option>
+                                </select>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button class="button button--secondary button--big">Cancel</button>
+                    <button class="button button--big">Submit</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            Copyright “<a href="#">Demo Shop</a>”, 2017
+        </footer>
+    </div>
+    <script src="../js/modals.js"></script>
+</body>
+</html>

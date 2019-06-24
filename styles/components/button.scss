@@ -1,0 +1,59 @@
+.button {
+    width: 7.5rem;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: $base-font-size;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(180deg, #2BBCC2 0%, #1B745F 100%);
+    cursor: pointer;
+
+    &::first-letter {
+        text-transform: capitalize;
+    }
+
+    &--big {
+        width: 10.625rem;
+        padding: 1rem;
+        font-size: 1.125rem;
+        font-weight: bold;
+    }
+
+    &--autosize {
+        width: auto;
+    }
+    
+    &--secondary {
+        background: linear-gradient(180deg, #B1B1B1 0%, #777777 100%);
+    }
+    
+    &:active,
+    &--active {
+        background: linear-gradient(180deg,  #1B745F 0%, #2BBCC2 100%);
+        box-shadow: inset 2px 2px 4px 0 rgba(0,0,0,0.3);
+    }
+    
+    &--secondary:active {
+        background: linear-gradient(0deg, #B1B1B1 0%, #777777 100%);
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+    }
+    
+    &-link {
+        display: inline-block;
+        padding: 0;
+        font-size: 1rem;
+        text-decoration: underline;
+        color: $base-green;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+}
+
+

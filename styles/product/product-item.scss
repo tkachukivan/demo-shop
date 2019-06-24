@@ -1,0 +1,134 @@
+.product-item {
+    @include background-img("modal-bg.png", auto, repeat);
+
+    &--extented-view {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.25rem 1.25rem;
+        padding: 1.25rem;
+
+        @media(max-width: $mobile) {
+            grid-template-columns: 1fr;
+            min-height: 31.25rem;
+        }
+
+        .product-item__image-wrapper {
+            height: 21.87rem;
+
+            @media(max-width: $mobile) {
+                height: 16.87rem;
+            }
+        }
+
+        .product-item__information-wrapper {
+            height: auto;
+            min-height: 180px;
+            padding: 0;
+        }
+
+        .product-item__description {
+            font-size: 1rem;
+            max-height: fit-content;
+        }
+    }
+
+    &__image-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 15rem;
+    }
+    
+    &__image {
+        width: 100%;
+        height: 100%;
+    }
+    
+    &__image-description {
+        position: absolute;
+        bottom: 2rem;
+        padding: 0 2.5rem;
+        font-style: italic;
+        font-size: $base-font-size;
+        text-align: center;
+        color: #fff;
+        z-index: 1;
+    }
+    
+    &__image-wrapper:hover .product-item__image-slider {
+        display: flex;
+    }
+    
+    &__image-slider {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        width: 2.5rem;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    &__image-slider::before {
+        content: '';
+        width: 100%;
+        height: 2.5rem;
+        @include background-img("arrow.svg", cover);
+    }
+    
+    &__image-slider--next {
+        right: 0;
+        justify-content: flex-start;
+    }
+    
+    &__image-slider--next::before {
+        transform: rotate(180deg);
+    }
+    
+    &__information-wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: calc(100% - 15rem);
+        padding: 1rem 1.25rem;
+    }
+    
+    &__title {
+        margin: 0;
+        padding-bottom: 0.62rem;
+        font-size: 1.12rem;
+        font-weight: bold;
+        border-bottom: 2px solid #3FC5CB;
+    }
+    
+    &__description {
+        max-height: 6.87rem;
+        overflow: hidden;
+        margin: 0.62rem 0;
+        font-size: $base-font-size;
+    }
+    
+    &__information {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    &__price {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    
+    &__price-currency {
+        color: $base-green;
+    }
+    
+    &__left {
+        font-weight: normal;
+        font-size: 1.12rem;
+    }
+}

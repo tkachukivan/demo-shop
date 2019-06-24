@@ -1,0 +1,40 @@
+.rating-editable {
+    position: relative;
+    width: 5.5em;
+    height: 1.1em;
+    @include background-img("star-inactive-gray.svg", 1.1em auto, repeat-x);
+}
+
+.rating-editable__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.1em;
+    margin: 0;
+    font-size: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.rating-editable__item:focus {
+    outline: none;
+}
+
+.rating-editable__item:hover,
+.rating-editable__item:checked {
+    @include background-img("star-active.svg", 1.1em auto, repeat-x);
+}
+
+.rating-editable__item:hover ~ .rating-editable__item {
+    @include background-img("star-inactive-gray.svg", 1.1em auto, repeat-x);
+}
+
+$stars: (1, 5, 1.1rem), (2, 4, 2.2rem), (3, 3, 3.3rem), (4, 2, 4.4rem), (5, 1, 5.5rem);
+
+@each $i, $z-index, $width in $stars {
+    .rating-editable__item:nth-of-type(#{$i}) {
+        z-index: $z-index;
+        width: $width;
+    }
+}

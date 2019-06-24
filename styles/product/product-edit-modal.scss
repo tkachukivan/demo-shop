@@ -1,0 +1,16 @@
+.product-edit-modal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.25rem 3.12rem;
+    font-size: 1rem;
+    text-align: left;
+
+    @media(max-width: $mobile) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.product-edit-modal-section {
+    margin-bottom: 1.5rem;
+}
+

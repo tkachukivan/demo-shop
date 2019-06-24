@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/style.css">
+    <title>product customer</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header-wrapper">
+            <div class="header page-container">
+                <h1 class="header__logo">
+                    <a href="../">
+                        <img src="../img/logo.svg" alt="logo">
+                    </a>
+                </h1>
+    
+                <div class="header__user">
+                    <div class="header__user-name">
+                        Hello, <span>John_Doe</span> 
+                    </div>
+                    <button class="header__user-logout"></button>
+                </div>
+            </div>
+        </header>
+        <main class="page-container page-container--main">
+            <nav class="product-nav">
+                <a href="./main.html" class="product-nav__link">Back</a>
+                <p class="product-nav__category">
+                    Category: <span>Man / Active wear</span>
+                </p>
+            </nav>
+            <div class="product-item product-item--extented-view ">
+                <div class="product-item__image-wrapper">
+                    <img src="../img/classic-close-up-clothes.jpg" class="product-item__image" alt="product-item-image"/>
+                    <p class="product-item__image-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cumque esse 
+                        Excepturi inventore iste magni, praesentium quo sed vero voluptas!                        
+                    </p>
+                    <div class="rating-wrapper">
+                        <div class="rating rating--5"></div>
+                    </div>
+    
+                    <div class="product-item__image-slider product-item__image-slider--prev"></div>
+                    <div class="product-item__image-slider product-item__image-slider--next"></div>
+                </div>
+                <div class="product-item__information-wrapper">
+                    <div>
+                        <h2 class="product-item__title">
+                            Active Coat Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.3
+                        </h2>
+                        <p class="product-item__description">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam, libero 
+                            aliquid architecto ad quis maiores sit nulla officiis ex velit sapiente autem fugit 
+                            quam, qui reprehenderit veniam fugiat nemo exercitationem cum minus ipsa 
+                            consequuntur. Pariatur totam suscipit, voluptatibus laudantium.
+                        </p>
+                    </div>
+                    <div class="product-item__information">
+                        <div class="product-item__price">
+                            <span class="product-item__price-currency">$</span>47.95
+                            <span class="product-item__left">(9 items left)</span>
+                        </div>
+                        <button class="button button-buy">
+                            Buy
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-review-add-wrapper">
+                <p>There is no user reviews for now.</p>
+                <p class="product-review-share product-review-share--active">
+                    Would you like to <button class="product-review-add__button">share your thoughts with other customers</button>?
+                </p>
+                <p class="product-review-share">
+                    Share your thoughts with other customers
+                </p>
+            </div>
+    
+            <div class="product-review">
+                <h3 class="product-review__title">
+                    Add review
+                </h3>
+                <div class="product-review-preview">
+                    <div class="clearfix">
+                        <div class="product-review-preview__author pull-left">
+                                By <span>K. L. Phanon</span> March 4, 2017
+                        </div>
+                    </div>
+                    <div class="product-review-preview__details">
+                        <div class="product-review-preview__avatar-wrapper">
+                            <img src="" alt="" class="product-review-preview__avatar product-review-preview__avatar--empty">
+                        </div>
+                        <div class="product-review-preview__text">
+                            Start typing and your review text will appear here...
+                        </div>
+                    </div>
+                </div>
+                <div class="product-review-edit-wrapper">
+                    <div class="product-review-edit__title-wrapper">
+                        <h4 class="product-review-edit__title">edit your review</h4>
+                    </div>
+                    <div class="product-review-edit">
+                        <div class="review-user-info">
+                            <div>
+                                <label for="review-author">Enter your name:</label>
+                                <input type="text"
+                                        class="text-field"
+                                        id="review-author">
+                            </div>
+                            <div class="review-author-avatar-wrapper">
+                                <label>Choose your avatar:</label>
+                                <div class="review-author-avatar">
+                                    <p class="review-author-avatar__label">Image not selected</p>
+                                    <label class="review-author-avatar__upload">
+                                        <input type="file" class="review-author-avatar__input">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-user-review">
+                            <div >
+                                <label>Write your review:</label>
+                                <div class="pull-right product-review-rating">
+                                    <span>Rate product:</span>
+                                    <div class="rating-editable">
+                                        <input class="rating-editable__item" type="radio" name="rating" value="1">
+                                        <input class="rating-editable__item" type="radio" name="rating" value="2">
+                                        <input class="rating-editable__item" type="radio" name="rating" value="3">
+                                        <input class="rating-editable__item" type="radio" name="rating" value="4">
+                                        <input class="rating-editable__item" type="radio" name="rating" value="5">
+                                    </div>
+                                </div>
+                                
+                                <textarea type="text"
+                                            class="text-field"
+                                            rows="10"></textarea>
+                                <div class="review-user-review__actions">
+                                    <div class="review-user-review__actions-list">
+                                        <button class="button button--secondary button--autosize">Bold</button>
+                                        <button class="button button--secondary button--autosize">Emphasize</button>
+                                        <button class="button button--secondary button--autosize">Quote</button>
+                                    </div>
+                                    <div class="review-user-review__actions-list">
+                                        <button class="button button--secondary">Cancel</button>
+                                        <button class="button">Add review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </main>
+        <div class="modal-wrapper buy-modal">
+            <div class="modal">
+                <div class="modal__header">
+                    Thank you!
+                </div>
+                <div class="modal__body">You successfully purchased this item.</div>
+                <div class="modal__footer">
+                    <button class="button button--autosize button--big">Continue shopping</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            Copyright “<a href="#">Demo Shop</a>”, 2017
+        </footer>
+    </div>
+    <script src="../js/product.js"></script>
+    <script src="../js/modals.js"></script>
+</body>
+</html>

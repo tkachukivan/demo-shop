@@ -1,0 +1,40 @@
+.select-wrapper {
+    position: relative;
+    min-width: 12.685rem;
+    margin-top: 5px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0.37rem;
+        right: 0.62rem;
+        width: 0.62rem;
+        height: 0.62rem;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-45deg);
+    }
+    
+    &--white select {
+        background-color: #fff;
+        color: #000;
+    }
+    
+    &--white::before {
+        border-color: $base-green;
+    }
+}
+
+.select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: #FFFFFF;
+    font-size: $base-font-size;
+    border: none;
+    border-radius: 5px;
+    background-color: $base-green;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

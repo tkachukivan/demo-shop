@@ -1,0 +1,25 @@
+.text-field {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 0.375rem 1rem; 
+    font-size: $base-font-size;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+
+    &::placeholder {
+        font-style: italic;
+        color: #999999;
+        font-size: $base-font-size;
+    }
+    
+    &:focus {
+        border-color: #9CC3BC;
+    }
+    
+    &:invalid {
+        border-color: #ff0000; 
+    }
+}
