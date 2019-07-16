@@ -1,4 +1,4 @@
-import { setFileToBase64 } from '../../utils/index.js';
+import { setFileToBase64 } from '../../../utils/index.js';
 
 const template = document.createElement('template');
 template.innerHTML = `

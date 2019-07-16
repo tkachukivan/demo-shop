@@ -1,3 +1,5 @@
+import { toggleReview } from './review-opener.js';
+
 const template = document.createElement('template');
 template.innerHTML = `
 <h3 class="review__title">
@@ -46,18 +48,24 @@ class ProductReview extends HTMLElement {
         this.appendChild(template.content.cloneNode(true));
 
         this.$form = this.querySelector('form');
+        this.$closeButton = this.querySelector('.button-review-cancel');
+
         this.$editAuthorName = this.querySelector('review-edit-author-name');
         this.$previewAuthorName = this.querySelector('review-preview-author-name');
         this.$uploadAuthorAvatar = this.querySelector('review-edit-author-avatar');
         this.$previewAuthorAvatar = this.querySelector('review-preview-author-avatar');
         this.$editRating = this.querySelector('review-edit-rating');
         this.$previewRating = this.querySelector('review-preview-rating');
+        this.$editReviewText = this.querySelector('review-edit-text');
+        this.$previewReviewText = this.querySelector('review-preview-text');
 
         this.$editAuthorName.addEventListener('onAuthorNameChange', this.onAuthorNameChange.bind(this));
         this.$uploadAuthorAvatar.addEventListener('onAuthorAvatarChange', this.onAuthorAvatarChange.bind(this));
         this.$editRating.addEventListener('onRatingChange', this.onRatingChange.bind(this));
+        this.$editReviewText.addEventListener('onReviewTextChange', this.onReviewTextChange.bind(this));
 
         this.$form.addEventListener('submit', (e) => { e.preventDefault(); });
+        this.$closeButton.addEventListener('click', toggleReview );
     }
 
     onAuthorNameChange(e) {
@@ -70,6 +78,9 @@ class ProductReview extends HTMLElement {
 
     onRatingChange(e) {
         this.$previewRating.setAttribute('review-rating', e.detail);
+    }
+    onReviewTextChange(e) {
+        this.$previewReviewText.setAttribute('review-text', e.detail);
     }
 }
 

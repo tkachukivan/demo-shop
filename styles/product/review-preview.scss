@@ -46,8 +46,37 @@
     &__text {
         margin-bottom: 1.25rem;
         font-size: $base-font-size;
-        font-style: italic;
         color: white;
-        opacity: 0.5;
+
+        &--default {
+            opacity: 0.5;
+            font-style: italic;
+        }
+
+        b, i {
+            color: #FDC228;
+        }
+
+        blockquote {
+            position: relative;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        blockquote::before,
+        blockquote::after {
+            content: open-quote;
+            font-size: 3rem;
+            color: #FDC228;
+        }
+
+        blockquote::after {
+            content: close-quote;
+            position: absolute;
+            bottom: -70%;
+            font-size: 3rem;
+            color: #FDC228;
+        }
     }
 }
