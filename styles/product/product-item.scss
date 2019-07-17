@@ -44,6 +44,17 @@
         width: 100%;
         height: 100%;
     }
+
+    &-slider &__image {
+        display: none;
+        opacity: 0;
+
+        &--active {
+            display: block;
+            opacity: 1;
+            animation: fade 0.5s ease-in-out;
+        }
+    }
     
     &__image-description {
         position: absolute;
@@ -88,6 +99,39 @@
     &__image-slider--next::before {
         transform: rotate(180deg);
     }
+
+    &__zoom {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: -21rem;
+        width: 20rem;
+        height: 20rem;
+        z-index: 2;
+        background: #288575;
+        border: 3px solid #288575;
+
+        &--active {
+            display: block;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1rem);
+            left: -2%;
+            width: 2rem;
+            height: 2rem;
+            z-index: -1;
+            background: #288575;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__zoom-canvas {
+        width: 100%;
+        height: 100%;
+    }
     
     &__information-wrapper {
         display: flex;
@@ -130,5 +174,79 @@
     &__left {
         font-weight: normal;
         font-size: 1.12rem;
+    }
+}
+
+.from-left-to-default {
+    animation: fromLeftToDefault 0.5s;
+}
+
+.from-default-to-left {
+    animation: fromDefaultToLeft 0.5s;
+}
+
+.from-right-to-default {
+    animation: fromRightToDefault 0.5s;
+}
+
+.from-default-to-right {
+    animation: fromDefaultToRight 0.5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fromLeftToDefault {
+    0% {
+        opacity: 0;
+        transform: translateX(4rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromDefaultToLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(4rem);
+    }
+}
+
+@keyframes fromRightToDefault {
+    0% {
+        opacity: 0;
+        transform: translateX(-4rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromDefaultToRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-4rem);
     }
 }

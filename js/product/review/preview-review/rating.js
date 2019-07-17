@@ -7,6 +7,15 @@ class ReviewPreviewRating extends HTMLElement {
         return ['review-rating'];
     }
 
+    connectedCallback() {
+        if(!this.hasAttribute('review-rating')) {
+            this.innerHTML = `
+                <div>
+                    <div class="rating rating--${this.getAttribute('review-rating')}"></div>
+                </div>`;
+        }
+    }
+
     attributeChangedCallback(name, oldValue, newValue) {
         this.innerHTML = `
         <div>

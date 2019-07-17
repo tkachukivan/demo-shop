@@ -7,3 +7,9 @@ export const setFileToBase64 = (file) => {
         fr.readAsDataURL(file);
     });
 };
+
+export const resolvePromiseInTime = (timeout) => {
+    return new Promise((res) => {
+        setTimeout(res, timeout);
+    })
+}
