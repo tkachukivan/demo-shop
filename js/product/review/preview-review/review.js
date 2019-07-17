@@ -39,12 +39,11 @@ class ReviewPreviewText extends HTMLElement {
         }
     }
 
-    replacer(_, t, txt) {
-        let tag = t;
-        
+    replacer(_, t, txt) {        
         if (tag === 'q') {
             tag = 'blockquote';
         }
+
         return `<${tag}>${txt}</${tag}>`
     }
 }

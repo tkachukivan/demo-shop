@@ -31,7 +31,8 @@ class ReviewEditText extends HTMLElement {
         const tag = e.target.dataset.text;
         if (!tag) return;
 
-        const selection = document.getSelection()
+        const selection = document.getSelection();
+        
         if (!selection.toString()) {
             this.$textarea.value = `${this.$textarea.value}[${tag}][/${tag}]`
         } else {
