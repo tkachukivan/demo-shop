@@ -1,4 +1,4 @@
-.product-review {
+.review {
     display: none;
 
     &--active {
@@ -12,7 +12,7 @@
     }
 }
 
-.product-review-add-wrapper {
+.review-add-wrapper {
     margin: 1.87rem 0 0;
     text-align: center;
     font-size: 1rem;
@@ -23,7 +23,7 @@
     }
 }
 
-.product-review-add__button {
+.review-add__button {
     padding: 0;
     font-size: inherit;
     color: inherit;
@@ -37,7 +37,7 @@
     }
 }
 
-.product-review-share {
+.review-share {
     display: none;
 
     &--active {

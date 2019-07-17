@@ -69,91 +69,17 @@
                     </div>
                 </div>
             </div>
-            <div class="product-review-add-wrapper">
+            <div class="review-add-wrapper">
                 <p>There is no user reviews for now.</p>
-                <p class="product-review-share product-review-share--active">
-                    Would you like to <button class="product-review-add__button">share your thoughts with other customers</button>?
+                <p class="review-share review-share--active">
+                    Would you like to <button class="review-add__button">share your thoughts with other customers</button>?
                 </p>
-                <p class="product-review-share">
+                <p class="review-share">
                     Share your thoughts with other customers
                 </p>
             </div>
-    
-            <div class="product-review">
-                <h3 class="product-review__title">
-                    Add review
-                </h3>
-                <div class="product-review-preview">
-                    <div class="clearfix">
-                        <div class="product-review-preview__author pull-left">
-                                By <span>K. L. Phanon</span> March 4, 2017
-                        </div>
-                    </div>
-                    <div class="product-review-preview__details">
-                        <div class="product-review-preview__avatar-wrapper">
-                            <img src="" alt="" class="product-review-preview__avatar product-review-preview__avatar--empty">
-                        </div>
-                        <div class="product-review-preview__text">
-                            Start typing and your review text will appear here...
-                        </div>
-                    </div>
-                </div>
-                <div class="product-review-edit-wrapper">
-                    <div class="product-review-edit__title-wrapper">
-                        <h4 class="product-review-edit__title">edit your review</h4>
-                    </div>
-                    <div class="product-review-edit">
-                        <div class="review-user-info">
-                            <div>
-                                <label for="review-author">Enter your name:</label>
-                                <input type="text"
-                                        class="text-field"
-                                        id="review-author">
-                            </div>
-                            <div class="review-author-avatar-wrapper">
-                                <label>Choose your avatar:</label>
-                                <div class="review-author-avatar">
-                                    <p class="review-author-avatar__label">Image not selected</p>
-                                    <label class="review-author-avatar__upload">
-                                        <input type="file" class="review-author-avatar__input">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-user-review">
-                            <div >
-                                <label>Write your review:</label>
-                                <div class="pull-right product-review-rating">
-                                    <span>Rate product:</span>
-                                    <div class="rating-editable">
-                                        <input class="rating-editable__item" type="radio" name="rating" value="1">
-                                        <input class="rating-editable__item" type="radio" name="rating" value="2">
-                                        <input class="rating-editable__item" type="radio" name="rating" value="3">
-                                        <input class="rating-editable__item" type="radio" name="rating" value="4">
-                                        <input class="rating-editable__item" type="radio" name="rating" value="5">
-                                    </div>
-                                </div>
-                                
-                                <textarea type="text"
-                                            class="text-field"
-                                            rows="10"></textarea>
-                                <div class="review-user-review__actions">
-                                    <div class="review-user-review__actions-list">
-                                        <button class="button button--secondary button--autosize">Bold</button>
-                                        <button class="button button--secondary button--autosize">Emphasize</button>
-                                        <button class="button button--secondary button--autosize">Quote</button>
-                                    </div>
-                                    <div class="review-user-review__actions-list">
-                                        <button class="button button--secondary">Cancel</button>
-                                        <button class="button">Add review</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
+            <div class="review">
+                <product-review></product-review>
             </div>
         </main>
         <div class="modal-wrapper buy-modal">
@@ -171,7 +97,7 @@
             Copyright “<a href="#">Demo Shop</a>”, 2017
         </footer>
     </div>
-    <script src="../js/product.js"></script>
+    <script src="../js/product/index.js" type="module"></script>
     <script src="../js/modals.js"></script>
 </body>
 </html>
