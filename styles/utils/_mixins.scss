@@ -1,6 +1,0 @@
-@mixin background-img($image, $size:auto, $repeat: no-repeat, $position: unset) {
-    background: url(../img/#{$image});
-    background-size: $size;
-    background-repeat: $repeat;
-    background-position: $position;
-}
