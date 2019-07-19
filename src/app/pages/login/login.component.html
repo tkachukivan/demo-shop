@@ -1,0 +1,45 @@
+<main class="container container--blur">
+    <div class="login-wrapper">
+        <div class="login">
+            <div class="login__header">
+                Login to “Demo Shop”
+            </div>
+            <form
+                class="login-form"
+                #loginForm="ngForm"
+                (ngSubmit)="onSubmit()"
+                >
+                <div class="login-form__field">
+                    <label for="login">Your login:</label>
+                    <input type="text"
+                        class="text-field login-form__input login-form__input--user-name"
+                        id="login"
+                        pattern="^[A-Za-z]*$"
+                        name="login"
+                        required
+                        [(ngModel)]="userLoginForm.login"
+                        >
+                    <span class="login-form__field-icon login-form__field-icon--user-name"></span>
+                </div>
+                
+                <div class="login-form__field">
+                    <label for="password">Your password:</label>
+                    <input type="text"
+                        class="text-field login-form__input login-form__input--password"
+                        id="password"
+                        name="password"
+                        required
+                        [(ngModel)]="userLoginForm.password"
+                        >
+                    <span class="login-form__field-icon login-form__field-icon--password"></span>
+                </div>
+                
+                <div class="login-form__actions">
+                    <button type="submit" class="button button--big" [disabled]="!loginForm.form.valid">
+                        submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

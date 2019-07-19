@@ -71,11 +71,11 @@
         @include background-img("login-inactive.svg", 100%);
     }
     
-    &__input--user-name:focus + .login-form__field-icon--user-name::before {
+    &__input--user-name:focus + &__field-icon--user-name::before {
         @include background-img("login-active.svg", 100%);
     }
     
-    &__input--user-name:invalid + .login-form__field-icon--user-name::before {
+    &__input--user-name:invalid.ng-touched + &__field-icon--user-name::before {
         @include background-img("login-invalid.svg", 100%);
     }
     
@@ -87,11 +87,11 @@
         @include background-img("password-inactive.svg", 100%);
     }
     
-    &__input--password:focus + .login-form__field-icon--password::before {
+    &__input--password:focus + &__field-icon--password::before {
         @include background-img("password-active.svg", 100%);
     }
     
-    &__input--password:invalid + .login-form__field-icon--password::before {
+    &__input--password:invalid.ng-touched + &__field-icon--password::before {
         @include background-img("password-invalid.svg", 100%);
     }
 }

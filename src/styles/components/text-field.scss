@@ -19,7 +19,7 @@
         border-color: #9CC3BC;
     }
     
-    &:invalid {
+    &:invalid.ng-touched {
         border-color: #ff0000; 
     }
 }
