@@ -22,6 +22,7 @@
     }
 
     &__header {
+        margin: 0;
         padding: 1.25rem;
         text-align: center;
         font-size: 1.375rem;
@@ -38,6 +39,16 @@
     border-bottom-right-radius: 1rem;
     @include background-img("modal-bg.png", auto, repeat);
 
+    &__error-message {
+        margin-bottom: 1rem;
+        padding: .75rem 1.25rem;
+        text-align: center;
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: .25rem;
+    }
+    
     &__actions {
         display: flex;
         justify-content: flex-end;

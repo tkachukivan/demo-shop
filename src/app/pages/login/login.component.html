@@ -1,14 +1,17 @@
 <main class="container container--blur">
     <div class="login-wrapper">
         <div class="login">
-            <div class="login__header">
+            <h1 class="login__header">
                 Login to “Demo Shop”
-            </div>
+            </h1>
             <form
                 class="login-form"
                 #loginForm="ngForm"
                 (ngSubmit)="onSubmit()"
                 >
+                <div class="login-form__error-message" *ngIf="isLoginFailed">
+                    Your login or password was incorrect.
+                </div>
                 <div class="login-form__field">
                     <label for="login">Your login:</label>
                     <input type="text"
@@ -24,7 +27,7 @@
                 
                 <div class="login-form__field">
                     <label for="password">Your password:</label>
-                    <input type="text"
+                    <input type="password"
                         class="text-field login-form__input login-form__input--password"
                         id="password"
                         name="password"
@@ -35,7 +38,7 @@
                 </div>
                 
                 <div class="login-form__actions">
-                    <button type="submit" class="button button--big" [disabled]="!loginForm.form.valid">
+                    <button type="submit" class="button button--big" [disabled]="!loginForm.form.valid || isLoading">
                         submit
                     </button>
                 </div>
