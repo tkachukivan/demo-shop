@@ -1,5 +1,5 @@
 @mixin background-img($image, $size:auto, $repeat: no-repeat, $position: unset) {
-    background: url(./assets/#{$image});
+    background: url('/assets/#{$image}');
     background-size: $size;
     background-repeat: $repeat;
     background-position: $position;

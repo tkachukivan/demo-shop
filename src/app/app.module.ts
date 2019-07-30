@@ -12,12 +12,14 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { EffectsModule } from '@ngrx/effects';
 
 import { LoginEffects } from './reducers/login/login.effects';
+import { RootComponent } from './pages/root/root.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ProductListComponent
+    ProductListComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginFormModel } from 'src/app/models/login-form.model';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+
 import { loginRequest } from 'src/app/reducers/login/login.actions';
 import { State } from 'src/app/reducers';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
