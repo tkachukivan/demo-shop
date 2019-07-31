@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { State } from 'src/app/reducers';
-import { logout } from 'src/app/reducers/login/login.actions';
+import { logoutRequest } from 'src/app/reducers/login/login.actions';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,6 @@ export class RootComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.store.dispatch(logout());
+    this.store.dispatch(logoutRequest({ userName: this.userName }));
   }
 }

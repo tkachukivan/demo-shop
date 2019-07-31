@@ -6,6 +6,7 @@ import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import * as LoginActions from './login.actions';
+import { API_ROOT, LOGIN, LOGOUT } from 'src/app/constants/endpoints';
 
 @Injectable()
 export class LoginEffects {
@@ -15,7 +16,7 @@ export class LoginEffects {
     ofType(LoginActions.LOGIN_REQUEST_ACTION),
     switchMap((action: LoginActions.ILoginRequest) => {
       return this.http.post(
-        'https://limitless-ridge-76594.herokuapp.com/api/login',
+        `${API_ROOT}${LOGIN}`,
         {
           login: action.login,
           password: action.password,
@@ -36,6 +37,21 @@ export class LoginEffects {
     ofType(LoginActions.LOGIN_ACTION),
     tap(() => {
       this.router.navigate(['/']);
+    })
+  );
+
+  @Effect()
+  logoutRequest = this.actions$.pipe(
+    ofType(LoginActions.LOGOUT_REQUEST_ACTION),
+    switchMap((logoutRequest: LoginActions.ILogoutRequestAction) => {
+      return this.http.post(
+        `${API_ROOT}${LOGOUT}`, { login: logoutRequest.userName},
+        { responseType: 'text' }
+      )
+      .pipe(
+        map(() => LoginActions.logout()),
+        catchError(() => of({type: 'EMPTY'}))
+      );
     })
   );
 
