@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { State } from 'src/app/reducers';
+import { AppState } from 'src/app/reducers';
 import { logoutRequest } from 'src/app/reducers/login/login.actions';
 
 @Component({
@@ -15,7 +15,7 @@ export class RootComponent implements OnInit, OnDestroy {
   public userName: string;
 
   constructor(
-    private store: Store<State>,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit() {

@@ -1,0 +1,101 @@
+<section class="filters">
+    <div class="filters__options">
+        <button class="button button--filter">
+            filter options
+        </button>
+    </div>
+    
+    <div class="filters__search">
+        <input type="text" class="text-field" placeholder="Filter by text...">
+    </div>
+
+    <div class="filter-options">
+        <div class="filter-options-group">
+            <div class="filter-option-group-item">
+                <div class="filter-options__title">
+                        Availability:
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="availability" class="checkbox__input">
+                    <label for="availability" class="checkbox__slider">Available only</label>
+                </div>
+            </div>
+            <div class="filter-option-group-item">
+                <div class="filter-options__title">
+                    Gender:
+                </div>
+                <div class="filter-options__options">
+                    <div class="radio-button filter-options__item">
+                        <input type="radio" id="gender-man" class="radio-button__input" name="gender" checked>
+                        <label for="gender-man" class="radio-button__label">Man</label>
+                    </div>
+                    <div class="radio-button filter-options__item">
+                        <input type="radio" id="gender-woman" class="radio-button__input" name="gender">
+                        <label for="gender-woman" class="radio-button__label">Woman</label>
+                    </div>
+                    <div class="radio-button filter-options__item">
+                        <input type="radio" id="gender-unisex" class="radio-button__input" name="gender">
+                        <label for="gender-unisex" class="radio-button__label">Unisex</label>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-option-group-item">
+                <div class="filter-options__title">
+                    Category:
+                </div>
+                <div class="select-wrapper">
+                    <select name="" id="" class="select">
+                        <option value="active">Active wear</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="filter-options-group">
+            <div class="filter-option-group-item filter-option-group-item--col-1">
+                <div class="filter-options__title">
+                    Rating:
+                </div>
+                <div class="range-input range-input_rating"></div>
+            </div>
+            <div class="filter-option-group-item filter-option-group-item--col-2">
+                <div class="filter-options__title">
+                    Price:
+                </div>
+                <div class="range-input range-input_price"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products">
+    <div class="product-item">
+        <div class="product-item__image-wrapper">
+            <img src="../img/womencoat.jpg" class="product-item__image" alt="product-item-image"/>
+            <div class="rating-wrapper">
+                <div class="rating rating--5"></div>
+            </div>
+        </div>
+        <div class="product-item__information-wrapper">
+            <div>
+                <h3 class="product-item__title">
+                    Active Coat Lorem 1
+                </h3>
+                <p class="product-item__description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing 
+                    elit. Adipisci aperiam, libero aliquid architecto ad quis 
+                    maiores sit nulla officiis ex velit sapiente autem fugit 
+                    quam, qui reprehenderit veniam.
+                </p>
+            </div>
+            <div class="product-item__information">
+                <div class="product-item__price">
+                    <span class="product-item__price-currency">$</span>47.95
+                </div>
+                <a href="./product_customer.html" class="button">
+                    Show more
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

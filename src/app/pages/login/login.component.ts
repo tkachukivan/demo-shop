@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { loginRequest } from 'src/app/reducers/login/login.actions';
-import { State } from 'src/app/reducers';
+import { AppState } from 'src/app/reducers';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public isLoginFailed = false;
 
   constructor(
-    private store: Store<State>,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit() {

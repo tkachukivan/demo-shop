@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
+import { Actions, Effect, ofType, createEffect, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -10,8 +10,13 @@ import { API_ROOT, LOGIN, LOGOUT } from 'src/app/constants/endpoints';
 
 @Injectable()
 export class LoginEffects {
+  init$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ROOT_EFFECTS_INIT),
+      map(() => LoginActions.autoLogin())
+    )
+  );
 
-  @Effect()
   loginRequest$ = createEffect(() => this.actions$.pipe(
     ofType(LoginActions.LOGIN_REQUEST_ACTION),
     switchMap((action: LoginActions.ILoginRequest) => {
@@ -32,40 +37,40 @@ export class LoginEffects {
     })
   ));
 
-  @Effect({ dispatch: false })
-  loginRedirect = this.actions$.pipe(
-    ofType(LoginActions.LOGIN_ACTION),
-    tap(() => {
-      this.router.navigate(['/']);
-    })
+  loginRedirect = createEffect( () => this.actions$.pipe(
+      ofType(LoginActions.LOGIN_ACTION),
+      tap(() => {
+        this.router.navigate(['/']);
+      })
+    ),
+    { dispatch: false }
   );
 
-  @Effect()
-  logoutRequest = this.actions$.pipe(
+  logoutRequest = createEffect( () => this.actions$.pipe(
     ofType(LoginActions.LOGOUT_REQUEST_ACTION),
     switchMap((logoutRequest: LoginActions.ILogoutRequestAction) => {
       return this.http.post(
-        `${API_ROOT}${LOGOUT}`, { login: logoutRequest.userName},
+        `${API_ROOT}${LOGOUT}`, { login: logoutRequest.userName },
         { responseType: 'text' }
       )
-      .pipe(
-        map(() => LoginActions.logout()),
-        catchError(() => of({type: 'EMPTY'}))
-      );
+        .pipe(
+          map(() => LoginActions.logout()),
+          catchError(() => of({ type: 'EMPTY' }))
+        );
     })
+  ));
+
+  logout = createEffect( () => this.actions$.pipe(
+      ofType(LoginActions.LOGOUT_ACTION),
+      tap(() => {
+        localStorage.removeItem('userData');
+        this.router.navigate(['/login']);
+      })
+    ),
+    { dispatch: false }
   );
 
-  @Effect({ dispatch: false })
-  logout = this.actions$.pipe(
-    ofType(LoginActions.LOGOUT_ACTION),
-    tap(() => {
-      localStorage.removeItem('userData');
-      this.router.navigate(['/login']);
-    })
-  );
-
-  @Effect()
-  autoLogin = this.actions$.pipe(
+  autoLogin = createEffect( () => this.actions$.pipe(
     ofType(LoginActions.AUTO_LOGIN),
     map(() => {
       const userData: LoginActions.ILoginUser = JSON.parse(localStorage.getItem('userData'));
@@ -74,9 +79,9 @@ export class LoginEffects {
         return LoginActions.login(userData);
       }
 
-      return {type: 'EMPTY'};
+      return { type: 'EMPTY' };
     })
-  );
+  ));
 
   constructor(
     private actions$: Actions,

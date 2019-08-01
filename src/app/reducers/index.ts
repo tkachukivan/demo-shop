@@ -5,14 +5,17 @@ import {
 import { environment } from '../../environments/environment';
 
 import * as fromLogin from './login/login.reducer';
+import * as fromProducts from './products/products.reducer';
 
-export interface State {
+export interface AppState {
   login: fromLogin.State;
+  products: fromProducts.State;
 }
 
-export const reducers: ActionReducerMap<State> = {
-  login: fromLogin.reducer
+export const reducers: ActionReducerMap<AppState> = {
+  login: fromLogin.reducer,
+  products: fromProducts.reducer
 };
 
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

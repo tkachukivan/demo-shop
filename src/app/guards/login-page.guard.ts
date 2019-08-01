@@ -8,12 +8,12 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-import { State } from '../reducers';
+import { AppState } from '../reducers';
 
 @Injectable({ providedIn: 'root' })
 export class LoginPageGuard implements CanActivate {
   constructor(
-    private store: Store<State>
+    private store: Store<AppState>
   ) { }
 
   canActivate(
