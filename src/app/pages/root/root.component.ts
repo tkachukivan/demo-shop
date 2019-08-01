@@ -12,7 +12,7 @@ import { logoutRequest } from 'src/app/reducers/login/login.actions';
 export class RootComponent implements OnInit, OnDestroy {
   private storeSub: Subscription;
 
-  public userName = null;
+  public userName: string;
 
   constructor(
     private store: Store<State>,
