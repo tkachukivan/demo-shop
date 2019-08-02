@@ -69,33 +69,5 @@
 </section>
 
 <section class="products">
-    <div class="product-item">
-        <div class="product-item__image-wrapper">
-            <img src="../img/womencoat.jpg" class="product-item__image" alt="product-item-image"/>
-            <div class="rating-wrapper">
-                <div class="rating rating--5"></div>
-            </div>
-        </div>
-        <div class="product-item__information-wrapper">
-            <div>
-                <h3 class="product-item__title">
-                    Active Coat Lorem 1
-                </h3>
-                <p class="product-item__description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing 
-                    elit. Adipisci aperiam, libero aliquid architecto ad quis 
-                    maiores sit nulla officiis ex velit sapiente autem fugit 
-                    quam, qui reprehenderit veniam.
-                </p>
-            </div>
-            <div class="product-item__information">
-                <div class="product-item__price">
-                    <span class="product-item__price-currency">$</span>47.95
-                </div>
-                <a href="./product_customer.html" class="button">
-                    Show more
-                </a>
-            </div>
-        </div>
-    </div>
+    <app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
 </section>

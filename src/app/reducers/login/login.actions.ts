@@ -22,6 +22,7 @@ export interface ILoginUser {
   userName: string;
   sessionToken: string;
   roleId: Role;
+  redirect: boolean;
 }
 
 export interface ILoginUserAction {
@@ -29,6 +30,7 @@ export interface ILoginUserAction {
   userName: string;
   sessionToken: string;
   roleId: Role;
+  redirect: boolean;
 }
 
 export interface ILogoutRequest {

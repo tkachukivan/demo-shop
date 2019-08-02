@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Actions, Effect, ofType, createEffect, ROOT_EFFECTS_INIT } from '@ngrx/effects';
+import { Actions, ofType, createEffect, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -30,6 +30,7 @@ export class LoginEffects {
         .pipe(
           map((userData: LoginActions.ILoginUser) => {
             localStorage.setItem('userData', JSON.stringify(userData));
+            userData.redirect = true;
             return LoginActions.login(userData);
           }),
           catchError(() => of(LoginActions.loginError()))
@@ -39,8 +40,10 @@ export class LoginEffects {
 
   loginRedirect = createEffect( () => this.actions$.pipe(
       ofType(LoginActions.LOGIN_ACTION),
-      tap(() => {
-        this.router.navigate(['/']);
+      tap((action: LoginActions.ILoginUserAction) => {
+        if (action.redirect) {
+          this.router.navigate(['/']);
+        }
       })
     ),
     { dispatch: false }
@@ -76,6 +79,7 @@ export class LoginEffects {
       const userData: LoginActions.ILoginUser = JSON.parse(localStorage.getItem('userData'));
 
       if (userData) {
+        userData.redirect = false;
         return LoginActions.login(userData);
       }
 
