@@ -19,6 +19,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { environment } from '../environments/environment';
 import { ProductItemComponent } from './pages/products-list/product-item/product-item.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { InfiniteScrollDirective } from './directives/infinite-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     ProductsListComponent,
     RootComponent,
     ProductItemComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    InfiniteScrollDirective
   ],
   imports: [
     BrowserModule,
