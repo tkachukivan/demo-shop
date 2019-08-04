@@ -1,0 +1,13 @@
+<div class="filter-form__title">
+    Price:
+</div>
+<div class="filter-form__options" [formGroup]="parent">
+  <input type="number"
+      class="text-field text-field--number filter-form__item"
+      placeholder="From"
+      formControlName="priceFrom">
+  <input type="number"
+      class="text-field text-field--number filter-form__item"
+      placeholder="To"
+      formControlName="priceTo">
+</div>

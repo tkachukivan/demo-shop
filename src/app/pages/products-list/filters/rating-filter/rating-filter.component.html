@@ -1,0 +1,11 @@
+<div class="filter-form__title">
+  Rating:
+</div>
+<div [formGroup]="parent">
+  <input type="number"
+      class="text-field text-field--number"
+      formControlName="rating"
+      max="5"
+      min="1"
+      placeholder="Rating from 1 to 5">
+</div>

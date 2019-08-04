@@ -1,0 +1,48 @@
+<div class="filters__toggle-button">
+  <button class="button button--filter" (click)="toggleFilters()">
+      filter options
+  </button>
+</div>
+
+<form
+    class="filter-form"
+    [ngClass]="{ 'filter-form--active': isFiltersOpen }"
+    [formGroup]="filtersForm"
+    (submit)="applyFilters()"
+    (reset)="applyFilters()"
+  >
+  <div class="filter-form-group filter-form-group--border" >
+      <app-availability-filter
+        [parent]="filtersForm"
+      ></app-availability-filter>
+      <app-gender-filter
+        [parent]="filtersForm"
+      ></app-gender-filter>
+      <app-categories-filter
+        [parent]="filtersForm"
+        [categories]="categories"
+      ></app-categories-filter>
+  </div>
+  <div class="filter-form-group">
+      <app-rating-filter
+        [parent]="filtersForm"
+      ></app-rating-filter>
+      <app-price-filter
+        [parent]="filtersForm"
+      ></app-price-filter>
+  </div>
+  <div class="filter-form-actions">
+    <button
+        class="button button--primary"
+        type="submit"
+    >
+      Apply
+    </button>
+    <button
+        class="button button--secondary"
+        type="reset"
+    >
+      Clear
+    </button>
+  </div>
+</form>

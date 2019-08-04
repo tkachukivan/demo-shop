@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Role } from 'src/app/enums';
 
 export const LOGIN_REQUEST_ACTION = '[Login Page] Login Request';
 export const LOGIN_ACTION = '[Login Page] Login';

@@ -9,17 +9,17 @@
         justify-content: space-between;
     }
 
-    &__options {
+    &__toggle-button {
         margin-right: 1rem;
     }
-    
+
     &__search {
         position: relative;
 
         &::before {
             content: '';
             position: absolute;
-            top: 0.62rem;
+            top: 20%;
             right: 0.62rem;
             display: block;
             width: 1.25rem;

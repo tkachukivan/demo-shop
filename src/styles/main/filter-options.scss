@@ -1,4 +1,4 @@
-.filter-options {
+.filter-form {
     position: absolute;
     right: 0;
     top: 2.93rem;
@@ -13,11 +13,11 @@
     @media(max-width: $mobile) {
         width: 100%;
     }
-    
+
     &--active {
         display: block;
     }
-    
+
     &::before {
         content: '';
         position: absolute;
@@ -27,7 +27,7 @@
         height: 1.25rem;
         background: white;
         transform: rotate(45deg);
-        
+
         @media(max-width: $mobile) {
             left: 3.125rem;
             right: 0;
@@ -38,15 +38,15 @@
         margin-bottom: 5px;
         font-size: 0.75rem;
     }
-    
+
     &__options {
         display: flex;
     }
-    
+
     &__item {
         margin-right: 1.25rem;
     }
-    
+
     &__item:last-of-type {
         margin-right: 0;
     }
@@ -54,46 +54,62 @@
 
 
 
-.filter-options-group {
+.filter-form-group {
     display: flex;
     justify-content: space-between;
-    border-bottom: 0.5px solid $base-green;
+
     padding: 0.625rem 0;
 
-    &:last-of-type {
-        border-bottom: none;
+    &--border{
+        border-bottom: 0.5px solid $base-green;
+
+        @media(max-width: $mobile) {
+            border-bottom: none;
+        }
     }
 
     @media(max-width: $mobile) {
         flex-direction: column;
-        border-bottom: none;
     }
 }
 
-.filter-option-group-item--col-1 {
+.filter-form-group-item--col-1 {
     width: 30%;
 }
 
-.filter-option-group-item--col-2 {
+.filter-form-group-item--col-2 {
     width: 65%;
 }
 
+.filter-form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    .button--primary {
+        margin-right: 1rem;
+    }
+
+    @media(max-width: $mobile) {
+        justify-content: space-around;
+    }
+}
+
 @media(max-width: $mobile) {
-    .filter-option-group-item {
+    .filter-form-group-item {
         padding: 1.25rem 0;
         border-bottom: 0.5px solid $base-green;
     }
 
-    .filter-option-group-item--col-1,
-    .filter-option-group-item--col-2 {
+    .filter-form-group-item--col-1,
+    .filter-form-group-item--col-2 {
         width: 100%;
     }
 
-    .filter-options-group:first-of-type .filter-option-group-item:first-of-type {
+    .filter-form-group:first-of-type .filter-form-group-item:first-of-type {
         padding: 0 0 1.25rem 0;
     }
 
-    .filter-options-group:last-of-type .filter-option-group-item:last-of-type {
+    .filter-form-group:last-of-type .filter-form-group-item:last-of-type {
         padding: 1.25rem 0 0 0;
         border-bottom: none;
     }

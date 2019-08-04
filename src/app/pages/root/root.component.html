@@ -2,14 +2,14 @@
     <header class="header-wrapper">
         <div class="header page-container">
             <h1 class="header__logo">
-                <a href="/">
+                <a routerLink="/">
                     <img src="assets/logo.svg" alt="">
                 </a>
             </h1>
 
             <div class="header__user">
                 <div class="header__user-name">
-                    Hello, <span>{{userName}}</span> 
+                    Hello, <span>{{userName}}</span>
                 </div>
                 <button class="header__user-logout" (click)="logout()"></button>
             </div>

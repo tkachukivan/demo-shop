@@ -1,0 +1,9 @@
+<div class="filter-form__title">
+  Gender:
+</div>
+<div class="filter-form__options" [formGroup]="parent">
+  <div class="radio-button filter-form__item" *ngFor="let gender of genders">
+    <input type="radio" id="gender-{{gender}}" class="radio-button__input" formControlName="gender" [value]="gender">
+    <label for="gender-{{gender}}" class="radio-button__label">{{gender}}</label>
+  </div>
+</div>

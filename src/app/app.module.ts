@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,6 +20,13 @@ import { environment } from '../environments/environment';
 import { ProductItemComponent } from './pages/products-list/product-item/product-item.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { InfiniteScrollDirective } from './directives/infinite-scroll.directive';
+import { SearchComponent } from './pages/products-list/search/search.component';
+import { FiltersComponent } from './pages/products-list/filters/filters.component';
+import { AvailabilityFilterComponent } from './pages/products-list/filters/availability-filter/availability-filter.component';
+import { GenderFilterComponent } from './pages/products-list/filters/gender-filter/gender-filter.component';
+import { CategoriesFilterComponent } from './pages/products-list/filters/categories-filter/categories-filter.component';
+import { RatingFilterComponent } from './pages/products-list/filters/rating-filter/rating-filter.component';
+import { PriceFilterComponent } from './pages/products-list/filters/price-filter/price-filter.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +36,20 @@ import { InfiniteScrollDirective } from './directives/infinite-scroll.directive'
     RootComponent,
     ProductItemComponent,
     ProductDetailsComponent,
-    InfiniteScrollDirective
+    InfiniteScrollDirective,
+    SearchComponent,
+    FiltersComponent,
+    AvailabilityFilterComponent,
+    GenderFilterComponent,
+    CategoriesFilterComponent,
+    RatingFilterComponent,
+    PriceFilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {
       metaReducers,

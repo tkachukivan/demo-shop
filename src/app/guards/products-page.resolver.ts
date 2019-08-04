@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
-import { productsRequest } from '../reducers/products/products.actions';
+import { productsRequest, productsCategoriesRequest } from '../reducers/products/products.actions';
 import { take, tap, filter, map } from 'rxjs/operators';
 
 @Injectable({
@@ -19,13 +19,16 @@ export class ProductsPageResolver implements Resolve<boolean> {
     return this.store.select('products')
       .pipe(
         take(1),
-        tap(({ loaded }) => {
-          if (!loaded) {
-            this.store.dispatch(productsRequest());
+        tap(({ productsLoaded, categoriesLoaded }) => {
+          if (!productsLoaded) {
+            this.store.dispatch(productsRequest(null));
+          }
+          if (!categoriesLoaded) {
+            this.store.dispatch(productsCategoriesRequest());
           }
         }),
-        filter(({ loaded }) => loaded),
-        map(({ loaded }) => loaded)
+        filter(({ productsLoaded, categoriesLoaded }) => productsLoaded && categoriesLoaded),
+        map(({ productsLoaded, categoriesLoaded }) => productsLoaded && categoriesLoaded)
       );
   }
 }

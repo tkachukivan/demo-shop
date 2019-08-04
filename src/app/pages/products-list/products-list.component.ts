@@ -3,7 +3,9 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ProductModel } from 'src/app/models/product.model';
 import { AppState } from 'src/app/reducers';
-import { productsRequestOnScroll } from 'src/app/reducers/products/products.actions';
+import { productsRequestOnScroll, productsRequest } from 'src/app/reducers/products/products.actions';
+import { ProductFiltersModel } from 'src/app/models/product-filters.model';
+import { ProductCategoryModel } from 'src/app/models/product-category.model';
 
 @Component({
   selector: 'app-products-list',
@@ -11,8 +13,9 @@ import { productsRequestOnScroll } from 'src/app/reducers/products/products.acti
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
   public products: ProductModel[];
+  public categories: ProductCategoryModel[];
   public isInfiniteScrollActive = false;
-  private currentPage = 1;
+  private filters = new ProductFiltersModel();
   private storeSub: Subscription;
 
   constructor(
@@ -21,8 +24,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.storeSub = this.store.select('products')
-      .subscribe(({ products, total, loading }) => {
+      .subscribe(({ products, total, loading, categories }) => {
         this.products = products;
+        this.categories = categories;
         this.isInfiniteScrollActive = products.length < total && !loading;
       });
   }
@@ -31,11 +35,34 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.storeSub.unsubscribe();
   }
 
+  onSearchChange(search: string) {
+    this.filters = {
+      ...this.filters,
+      search,
+      page: 1
+    };
+
+    this.updateProductsList();
+  }
+
+  onFiltersChanged(filters: ProductFiltersModel) {
+    this.filters = {
+      ...filters,
+      search: this.filters.search,
+      page: 1,
+    };
+
+    this.updateProductsList();
+  }
+
+  updateProductsList() {
+    this.store.dispatch(productsRequest(this.filters));
+  }
+
   loadDocuments() {
-    console.log('111');
     if (this.isInfiniteScrollActive) {
-      this.currentPage++;
-      this.store.dispatch(productsRequestOnScroll({ page: this.currentPage }));
+      this.filters.page++;
+      this.store.dispatch(productsRequestOnScroll(this.filters));
     }
   }
 }

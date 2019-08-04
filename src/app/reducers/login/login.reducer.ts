@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as LoginPageActions from './login.actions';
+import { Role } from 'src/app/enums';
 
 export interface State {
   userName: string;

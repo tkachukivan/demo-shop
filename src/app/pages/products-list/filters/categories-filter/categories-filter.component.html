@@ -1,0 +1,9 @@
+<div class="filter-form__title">
+  Category:
+</div>
+<div class="select-wrapper" [formGroup]="parent">
+  <select class="select" formControlName="categoryId">
+    <option value="" selected>None</option>
+    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+  </select>
+</div>
