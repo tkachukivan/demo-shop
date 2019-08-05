@@ -32,7 +32,12 @@ const productsReducer = createReducer(
     products: [...state.products, ...products],
     loading: false
   })),
-  on(ProductsActions.productsCategoriesLoaded, (state, { categories }) => ({...state, categories, categoriesLoaded: true }))
+  on(ProductsActions.productsCategoriesLoaded, (state, { categories }) => ({...state, categories, categoriesLoaded: true })),
+  on(ProductsActions.productDelete, (state, { productId }) => ({
+    ...state,
+    products: state.products.filter( p => p.id !== productId),
+    total: state.total - 1,
+  }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

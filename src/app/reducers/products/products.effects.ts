@@ -35,6 +35,18 @@ export class ProductsEffects {
     })
   ));
 
+  productDeleteRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(ProductsActions.PRODUCT_DELETE_REQUEST),
+    switchMap(( { productId }) => {
+      return this.http.delete(
+        `${API_ROOT}${PRODUCTS}/${productId}`
+      ).pipe(
+        map(() => ProductsActions.productDelete({ productId })),
+        catchError(() => EMPTY)
+      );
+    })
+  ));
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,

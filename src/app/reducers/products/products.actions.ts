@@ -9,6 +9,8 @@ export const PRODUCTS_REQUEST_ON_SCROLL = '[Products Page] Products Request On S
 export const PRODUCTS_LOADED_ON_SCROLL = '[Products Page] Products Loaded On Scroll';
 export const PRODUCTS_CATEGORIES_REQUEST = '[Products Page] Products Categories Request';
 export const PRODUCTS_CATEGORIES_LOADED = '[Products Page] Products Categories Loaded';
+export const PRODUCT_DELETE_REQUEST = '[Products Page] Products Delete Request';
+export const PRODUCT_DELETE = '[Products Page] Products Delete';
 
 export interface IProductsLoaded {
   products: ProductModel[];
@@ -17,6 +19,10 @@ export interface IProductsLoaded {
 
 export interface IProductsCategoriesLoaded {
   categories: ProductCategoryModel[];
+}
+
+export interface IProductsDelete {
+  productId: number;
 }
 
 export const productsRequest = createAction(
@@ -46,4 +52,14 @@ export const productsCategoriesRequest = createAction(
 export const productsCategoriesLoaded = createAction(
   PRODUCTS_CATEGORIES_LOADED,
   props<IProductsCategoriesLoaded>()
+);
+
+export const productDeleteRequest = createAction(
+  PRODUCT_DELETE_REQUEST,
+  props<IProductsDelete>()
+);
+
+export const productDelete = createAction(
+  PRODUCT_DELETE,
+  props<IProductsDelete>()
 );
