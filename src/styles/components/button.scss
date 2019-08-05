@@ -1,4 +1,5 @@
 .button {
+    display: block;
     width: 7.5rem;
     padding: 0.5rem;
     font-family: inherit;
@@ -25,25 +26,25 @@
     &--autosize {
         width: auto;
     }
-    
+
     &--secondary {
         background: linear-gradient(180deg, #B1B1B1 0%, #777777 100%);
     }
-    
+
     &:active,
     &--active {
         background: linear-gradient(180deg,  #1B745F 0%, #2BBCC2 100%);
         box-shadow: inset 2px 2px 4px 0 rgba(0,0,0,0.3);
     }
-    
+
     &--secondary:active {
         background: linear-gradient(0deg, #B1B1B1 0%, #777777 100%);
     }
-    
+
     &:disabled {
         opacity: 0.5;
     }
-    
+
     &-link {
         display: inline-block;
         padding: 0;

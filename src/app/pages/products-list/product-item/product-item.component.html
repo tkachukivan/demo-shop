@@ -1,6 +1,6 @@
 <div class="product-item__image-wrapper">
     <img [src]="product.image" class="product-item__image" alt="product-item-image"/>
-    <button *ngIf="userRole === rolesEnum.Admin"
+    <button *ngIf="isAdmin"
             class="product-item__remove-button"
             (click)="onDeleteProduct()"
             ></button>

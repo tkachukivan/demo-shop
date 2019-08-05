@@ -1,9 +1,7 @@
 .filters {
-    position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 1.25rem;
 
     @media (max-width: $mobile) {
         justify-content: space-between;

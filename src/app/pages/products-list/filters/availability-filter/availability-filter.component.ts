@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AvailabilityFilterComponent {
-  @HostBinding('class') class = 'filter-form-group-item';
+  @HostBinding('attr.class') cssClass = 'filter-form-group-item';
   @Input() parent: FormGroup;
 
   constructor() { }

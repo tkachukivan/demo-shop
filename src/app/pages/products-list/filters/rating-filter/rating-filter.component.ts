@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RatingFilterComponent implements OnInit {
-  @HostBinding('class') class = 'filter-form-group-item filter-form-group-item--col-1';
+  @HostBinding('attr.class') cssClass = 'filter-form-group-item filter-form-group-item--col-1';
   @Input() parent: FormGroup;
   constructor() { }
 

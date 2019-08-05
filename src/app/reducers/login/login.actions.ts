@@ -13,12 +13,6 @@ export interface ILoginRequest {
   password: string;
 }
 
-export interface ILoginRequestAction {
-  type: string;
-  login: string;
-  password: string;
-}
-
 export interface ILoginUser {
   userName: string;
   sessionToken: string;
@@ -26,20 +20,7 @@ export interface ILoginUser {
   redirect: boolean;
 }
 
-export interface ILoginUserAction {
-  type: string;
-  userName: string;
-  sessionToken: string;
-  roleId: Role;
-  redirect: boolean;
-}
-
 export interface ILogoutRequest {
-  userName: string;
-}
-
-export interface ILogoutRequestAction {
-  type: string;
   userName: string;
 }
 

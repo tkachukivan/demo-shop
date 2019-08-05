@@ -34,6 +34,12 @@
         }
     }
 
+    &--admin {
+        @media(max-width: $mobile) {
+            top: 6rem;
+        }
+    }
+
     &__title {
         margin-bottom: 5px;
         font-size: 0.75rem;

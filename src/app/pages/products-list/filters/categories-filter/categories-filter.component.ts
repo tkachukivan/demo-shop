@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoriesFilterComponent {
-  @HostBinding('class') class = 'filter-form-group-item';
+  @HostBinding('attr.class') cssClass = 'filter-form-group-item';
   @Input() categories: ProductCategoryModel[];
   @Input() parent: FormGroup;
 

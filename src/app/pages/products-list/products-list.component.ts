@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ProductModel } from 'src/app/models/product.model';
 import { AppState } from 'src/app/reducers';
-import { productsRequestOnScroll, productsRequest, productDeleteRequest } from 'src/app/reducers/products/products.actions';
+import { resetProductsList, productsRequest, productDeleteRequest, IProductsDelete } from 'src/app/reducers/products/products.actions';
 import { ProductFiltersModel } from 'src/app/models/product-filters.model';
 import { ProductCategoryModel } from 'src/app/models/product-category.model';
 import { Role } from 'src/app/enums';
@@ -17,6 +17,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   public categories: ProductCategoryModel[];
   public isInfiniteScrollActive = false;
   public roleId: Role;
+  public isAdmin: boolean;
+  private total: number;
   private filters = new ProductFiltersModel();
   private storeProductsSub: Subscription;
   private storeUserSub: Subscription;
@@ -28,6 +30,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.storeProductsSub = this.store.select('products')
       .subscribe(({ products, total, loading, categories }) => {
+        this.total = total;
         this.products = products;
         this.categories = categories;
         this.isInfiniteScrollActive = products.length < total && !loading;
@@ -35,7 +38,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
     this.storeUserSub = this.store.select('login')
       .subscribe(({ roleId }) => {
-        this.roleId = roleId;
+        this.isAdmin = roleId === Role.Admin;
       });
   }
 
@@ -65,17 +68,22 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   onProductDelete(productId: number) {
-    this.store.dispatch(productDeleteRequest({ productId }));
+    const actionPayload: IProductsDelete = { productId };
+    if (this.total > this.products.length) {
+      actionPayload.filters = { ...this.filters, page: this.filters.limit * this.filters.page, limit: 1 };
+    }
+    this.store.dispatch(productDeleteRequest(actionPayload));
   }
 
   updateProductsList() {
+    this.store.dispatch(resetProductsList());
     this.store.dispatch(productsRequest(this.filters));
   }
 
   loadDocuments() {
     if (this.isInfiniteScrollActive) {
       this.filters.page++;
-      this.store.dispatch(productsRequestOnScroll(this.filters));
+      this.store.dispatch(productsRequest(this.filters));
     }
   }
 }

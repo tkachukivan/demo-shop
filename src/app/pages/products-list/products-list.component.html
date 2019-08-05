@@ -1,12 +1,20 @@
-<section class="filters">
-    <app-filters [categories]="categories" (filterChanged)="onFiltersChanged($event)"></app-filters>
+<section class="products-header">
+  <div class="products-header__new-product" *ngIf="isAdmin">
+    <a [routerLink]="['/product', 'new']" class="button">
+      Add Product
+    </a>
+  </div>
+  <div class="filters">
+    <app-filters [categories]="categories" (filterChanged)="onFiltersChanged($event)" [isAdmin]="isAdmin"></app-filters>
     <app-search (searchChange)="onSearchChange($event)"></app-search>
+  </div>
 </section>
 
 <section class="products" [appInfiniteScroll]="isInfiniteScrollActive" (loadDocuments)="loadDocuments()">
-    <app-product-item *ngFor="let product of products"
-            [product]="product"
-            [userRole]="roleId"
-            (deleteProduct)="onProductDelete($event)"
-            ></app-product-item>
+  <app-product-item
+    *ngFor="let product of products"
+    [product]="product"
+    [isAdmin]="isAdmin"
+    (deleteProduct)="onProductDelete($event)"
+  ></app-product-item>
 </section>

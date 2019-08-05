@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PriceFilterComponent implements OnInit {
-  @HostBinding('class') class = 'filter-form-group-item filter-form-group-item--col-2';
+  @HostBinding('attr.class') cssClass = 'filter-form-group-item filter-form-group-item--col-2';
   @Input() parent: FormGroup;
   constructor() { }
 

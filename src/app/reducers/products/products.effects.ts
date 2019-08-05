@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
-import { map, catchError, switchMap, tap, filter } from 'rxjs/operators';
+import { EMPTY, of } from 'rxjs';
+import { map, catchError, switchMap } from 'rxjs/operators';
 
 import * as ProductsActions from './products.actions';
+import * as LoginActions from '../login/login.actions';
 import { API_ROOT, PRODUCTS, CATEGORIES } from 'src/app/constants/endpoints';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductCategoryModel } from 'src/app/models/product-category.model';
@@ -18,11 +19,6 @@ export class ProductsEffects {
     switchMap(this.loadProducts(ProductsActions.productsLoaded))
   ));
 
-  productsRequestOnScroll$ = createEffect(() => this.actions$.pipe(
-    ofType(ProductsActions.PRODUCTS_REQUEST_ON_SCROLL),
-    switchMap(this.loadProducts(ProductsActions.productsLoadedOnScroll))
-  ));
-
   productsCategoryRequest$ = createEffect(() => this.actions$.pipe(
     ofType(ProductsActions.PRODUCTS_CATEGORIES_REQUEST),
     switchMap(() => {
@@ -30,21 +26,27 @@ export class ProductsEffects {
         `${API_ROOT}${CATEGORIES}`
       ).pipe(
         map((categories: ProductCategoryModel[]) => ProductsActions.productsCategoriesLoaded({ categories })),
-        catchError(() => EMPTY)
+        catchError(this.errorHandler)
       );
     })
   ));
 
   productDeleteRequest$ = createEffect(() => this.actions$.pipe(
     ofType(ProductsActions.PRODUCT_DELETE_REQUEST),
-    switchMap(( { productId }) => {
+    switchMap(( action: ProductsActions.IProductsDelete & Action) => {
       return this.http.delete(
-        `${API_ROOT}${PRODUCTS}/${productId}`
+        `${API_ROOT}${PRODUCTS}/${action.productId}`
       ).pipe(
-        map(() => ProductsActions.productDelete({ productId })),
-        catchError(() => EMPTY)
+        switchMap(() => {
+          const actions = [ProductsActions.productDelete({ productId: action.productId }), ProductsActions.productsRequest(action.filters)];
+          if (!action.filters) {
+            actions.pop();
+          }
+          return actions;
+        }),
+        catchError(this.errorHandler)
       );
-    })
+    }),
   ));
 
   constructor(
@@ -53,8 +55,8 @@ export class ProductsEffects {
   ) { }
 
   loadProducts(action) {
-    return (filters: ProductFiltersModel & Action) => {
-      let params = new HttpParams().set('_limit', '6');
+    return (filters: ProductFiltersModel) => {
+      let params = new HttpParams();
 
       Object.keys(filters).forEach((filterName) => {
         if (!filters[filterName] || filterName === 'type') {
@@ -64,6 +66,9 @@ export class ProductsEffects {
         switch (filterName) {
           case 'page':
             params = params.set('_page', String(filters.page));
+            break;
+          case 'limit':
+            params = params.set('_limit', String(filters.limit));
             break;
           case 'search':
             params = params.set('q', filters.search);
@@ -100,8 +105,16 @@ export class ProductsEffects {
               total: Number(response.headers.get('X-Total-Count'))
             });
           }),
-          catchError(() => EMPTY)
+          catchError(this.errorHandler)
         );
     };
+  }
+
+  errorHandler(error) {
+    if (error.status === 401) {
+      return of(LoginActions.logout());
+    }
+
+    return EMPTY;
   }
 }

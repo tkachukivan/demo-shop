@@ -25,13 +25,14 @@ export const initialState: State = {
 const productsReducer = createReducer(
   initialState,
   on(ProductsActions.productsRequest, (state) => ({ ...state, loading: true })),
-  on(ProductsActions.productsLoaded, (state, { products, total }) => ({ ...state, products, productsLoaded: true, loading: false, total })),
-  on(ProductsActions.productsRequestOnScroll, (state) => ({ ...state, loading: true })),
-  on(ProductsActions.productsLoadedOnScroll, (state, { products }) => ({
+  on(ProductsActions.productsLoaded, (state, { products, total }) => ({
     ...state,
     products: [...state.products, ...products],
-    loading: false
+    loading: false,
+    productsLoaded: true,
+    total,
   })),
+  on(ProductsActions.resetProductsList, (state) => ({ ...state, products: [] })),
   on(ProductsActions.productsCategoriesLoaded, (state, { categories }) => ({...state, categories, categoriesLoaded: true })),
   on(ProductsActions.productDelete, (state, { productId }) => ({
     ...state,

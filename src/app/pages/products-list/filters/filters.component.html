@@ -1,12 +1,12 @@
 <div class="filters__toggle-button">
-  <button class="button button--filter" (click)="toggleFilters()">
+  <button class="button" (click)="toggleFilters()">
       filter options
   </button>
 </div>
 
 <form
     class="filter-form"
-    [ngClass]="{ 'filter-form--active': isFiltersOpen }"
+    [ngClass]="{ 'filter-form--active': isFiltersOpen, 'filter-form--admin': isAdmin }"
     [formGroup]="filtersForm"
     (submit)="applyFilters()"
     (reset)="applyFilters()"

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, Input, HostBinding, Output, EventEmitter } from '@angular/core';
 import { ProductModel } from 'src/app/models/product.model';
 import { Role } from 'src/app/enums';
 
@@ -8,10 +8,9 @@ import { Role } from 'src/app/enums';
 })
 export class ProductItemComponent {
   @Input() product: ProductModel;
-  @Input() userRole: Role;
+  @Input() isAdmin: boolean;
   @Output() deleteProduct = new EventEmitter<number>();
-  @HostBinding('class') class = 'product-item';
-  public rolesEnum = Role;
+  @HostBinding('attr.class') cssClass = 'product-item';
 
   constructor() { }
 

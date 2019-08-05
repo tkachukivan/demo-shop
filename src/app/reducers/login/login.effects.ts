@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 import * as LoginActions from './login.actions';
 import { API_ROOT, LOGIN, LOGOUT } from 'src/app/constants/endpoints';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class LoginEffects {
@@ -40,7 +41,7 @@ export class LoginEffects {
 
   loginRedirect = createEffect( () => this.actions$.pipe(
       ofType(LoginActions.LOGIN_ACTION),
-      tap((action: LoginActions.ILoginUserAction) => {
+      tap((action: LoginActions.ILoginUser & Action) => {
         if (action.redirect) {
           this.router.navigate(['/']);
         }
@@ -51,7 +52,7 @@ export class LoginEffects {
 
   logoutRequest = createEffect( () => this.actions$.pipe(
     ofType(LoginActions.LOGOUT_REQUEST_ACTION),
-    switchMap((logoutRequest: LoginActions.ILogoutRequestAction) => {
+    switchMap((logoutRequest: LoginActions.ILogoutRequest & Action) => {
       return this.http.post(
         `${API_ROOT}${LOGOUT}`, { login: logoutRequest.userName },
         { responseType: 'text' }

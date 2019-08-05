@@ -7,7 +7,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit {
-  @HostBinding('class') class = 'filters__search';
+  @HostBinding('attr.class') cssClass = 'filters__search';
   @Output() searchChange = new EventEmitter<string>();
 
   public onSearchInput = new Subject<string>();

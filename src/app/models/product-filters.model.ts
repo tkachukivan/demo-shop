@@ -8,6 +8,7 @@ export class ProductFiltersModel {
   public gender: Gender;
   public rating: number;
   public cost: ICostRange;
+  public limit = 6;
 
   constructor({
     page = 1,

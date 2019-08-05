@@ -5,8 +5,7 @@ import { ProductCategoryModel } from 'src/app/models/product-category.model';
 
 export const PRODUCTS_REQUEST = '[Products Page] Products Request';
 export const PRODUCTS_LOADED = '[Products Page] Products Loaded';
-export const PRODUCTS_REQUEST_ON_SCROLL = '[Products Page] Products Request On Scroll';
-export const PRODUCTS_LOADED_ON_SCROLL = '[Products Page] Products Loaded On Scroll';
+export const RESET_PRODUCTS_LIST = '[Products Page] Reset Products List';
 export const PRODUCTS_CATEGORIES_REQUEST = '[Products Page] Products Categories Request';
 export const PRODUCTS_CATEGORIES_LOADED = '[Products Page] Products Categories Loaded';
 export const PRODUCT_DELETE_REQUEST = '[Products Page] Products Delete Request';
@@ -23,6 +22,7 @@ export interface IProductsCategoriesLoaded {
 
 export interface IProductsDelete {
   productId: number;
+  filters?: ProductFiltersModel;
 }
 
 export const productsRequest = createAction(
@@ -35,15 +35,9 @@ export const productsLoaded = createAction(
   props<IProductsLoaded>()
 );
 
-export const productsRequestOnScroll = createAction(
-  PRODUCTS_REQUEST_ON_SCROLL,
-  props<ProductFiltersModel>()
-);
-
-export const productsLoadedOnScroll = createAction(
-  PRODUCTS_LOADED_ON_SCROLL,
-  props<IProductsLoaded>()
-);
+export const resetProductsList = createAction(
+  RESET_PRODUCTS_LIST,
+)
 
 export const productsCategoriesRequest = createAction(
   PRODUCTS_CATEGORIES_REQUEST,

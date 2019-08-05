@@ -8,7 +8,7 @@ import { Gender } from 'src/app/enums';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GenderFilterComponent {
-  @HostBinding('class') class = 'filter-form-group-item';
+  @HostBinding('attr.class') cssClass = 'filter-form-group-item';
   @Input() parent: FormGroup;
   public genders = Object.values(Gender);
   constructor() { }

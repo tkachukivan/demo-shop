@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { productsRequest, productsCategoriesRequest } from '../reducers/products/products.actions';
 import { take, tap, filter, map } from 'rxjs/operators';
+import { ProductFiltersModel } from '../models/product-filters.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class ProductsPageResolver implements Resolve<boolean> {
         take(1),
         tap(({ productsLoaded, categoriesLoaded }) => {
           if (!productsLoaded) {
-            this.store.dispatch(productsRequest(null));
+            this.store.dispatch(productsRequest(new ProductFiltersModel()));
           }
           if (!categoriesLoaded) {
             this.store.dispatch(productsCategoriesRequest());
