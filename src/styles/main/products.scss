@@ -13,6 +13,10 @@
           margin-bottom: 1rem;
         }
     }
+
+    &--is-user {
+      justify-content: flex-end;
+    }
 }
 
 .products {

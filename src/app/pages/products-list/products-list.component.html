@@ -1,4 +1,4 @@
-<section class="products-header">
+<section class="products-header" [ngClass]="{ 'products-header--is-user': !isAdmin }">
   <div class="products-header__new-product" *ngIf="isAdmin">
     <a [routerLink]="['/product', 'new']" class="button">
       Add Product
