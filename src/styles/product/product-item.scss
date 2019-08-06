@@ -1,7 +1,7 @@
 .product-item {
     @include background-img("modal-bg.png", auto, repeat);
 
-    &--extented-view {
+    &--extended-view {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.25rem 1.25rem;

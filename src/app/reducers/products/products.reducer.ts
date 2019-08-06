@@ -11,6 +11,7 @@ export interface State {
   loading: boolean;
   total: number;
   categories: ProductCategoryModel[];
+  currentProduct: ProductModel;
 }
 
 export const initialState: State = {
@@ -20,6 +21,7 @@ export const initialState: State = {
   loading: false,
   total: 0,
   categories: [],
+  currentProduct: null
 };
 
 const productsReducer = createReducer(
@@ -38,6 +40,25 @@ const productsReducer = createReducer(
     ...state,
     products: state.products.filter( p => p.id !== productId),
     total: state.total - 1,
+  })),
+  on(ProductsActions.setCurrentProduct, (state, product) => ({...state, currentProduct: product })),
+  on(ProductsActions.buyProduct, (state, { id, count, soldCount }) => ({
+    ...state,
+    products: state.products.map( p => {
+      if (p.id === id) {
+        return {
+          ...p,
+          count,
+          soldCount,
+        };
+      }
+      return p;
+    }),
+    currentProduct: {
+      ...state.currentProduct,
+      count,
+      soldCount,
+    }
   }))
 );
 

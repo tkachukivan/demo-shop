@@ -17,7 +17,7 @@ import { LoginEffects } from './reducers/login/login.effects';
 import { ProductsEffects } from './reducers/products/products.effects';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { environment } from '../environments/environment';
-import { ProductItemComponent } from './pages/products-list/product-item/product-item.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { InfiniteScrollDirective } from './directives/infinite-scroll.directive';
 import { SearchComponent } from './pages/products-list/search/search.component';
@@ -27,6 +27,8 @@ import { GenderFilterComponent } from './pages/products-list/filters/gender-filt
 import { CategoriesFilterComponent } from './pages/products-list/filters/categories-filter/categories-filter.component';
 import { RatingFilterComponent } from './pages/products-list/filters/rating-filter/rating-filter.component';
 import { PriceFilterComponent } from './pages/products-list/filters/price-filter/price-filter.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { BuyProductModalComponent } from './pages/product-details/buy-product-modal/buy-product-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { PriceFilterComponent } from './pages/products-list/filters/price-filter
     GenderFilterComponent,
     CategoriesFilterComponent,
     RatingFilterComponent,
-    PriceFilterComponent
+    PriceFilterComponent,
+    ModalComponent,
+    BuyProductModalComponent
   ],
   imports: [
     BrowserModule,

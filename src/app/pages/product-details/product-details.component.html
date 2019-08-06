@@ -1,1 +1,15 @@
-<p>product-details works!</p>
+<nav class="product-nav">
+  <a routerLink="/" class="product-nav__link">Back</a>
+  <p class="product-nav__category">
+    Category: <span>{{product?.gender}} / {{productCategory?.name}}</span>
+  </p>
+</nav>
+<app-product-item
+  [product]="product"
+  [isExtendedView]="true"
+  [isAdmin]="isAdmin"
+  (buyProduct)="onBuyProductClick($event)"
+>
+</app-product-item>
+
+<app-buy-product-modal [isOpen]="isBuyProductModalOpen" (closeModal)="onBuyProductModalClose()"></app-buy-product-modal>

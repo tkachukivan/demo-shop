@@ -10,6 +10,9 @@ export const PRODUCTS_CATEGORIES_REQUEST = '[Products Page] Products Categories 
 export const PRODUCTS_CATEGORIES_LOADED = '[Products Page] Products Categories Loaded';
 export const PRODUCT_DELETE_REQUEST = '[Products Page] Products Delete Request';
 export const PRODUCT_DELETE = '[Products Page] Products Delete';
+export const SET_CURRENT_PRODUCT = '[Product Details Page] Set Current Product';
+export const BUY_PRODUCT_REQUEST = '[Product Details Page] Buy Product Request';
+export const BUY_PRODUCT = '[Product Details Page] Buy Product';
 
 export interface IProductsLoaded {
   products: ProductModel[];
@@ -25,6 +28,12 @@ export interface IProductsDelete {
   filters?: ProductFiltersModel;
 }
 
+export interface IBuyProduct {
+  id: number;
+  count: number;
+  soldCount: number;
+}
+
 export const productsRequest = createAction(
   PRODUCTS_REQUEST,
   props<ProductFiltersModel>()
@@ -37,7 +46,7 @@ export const productsLoaded = createAction(
 
 export const resetProductsList = createAction(
   RESET_PRODUCTS_LIST,
-)
+);
 
 export const productsCategoriesRequest = createAction(
   PRODUCTS_CATEGORIES_REQUEST,
@@ -56,4 +65,18 @@ export const productDeleteRequest = createAction(
 export const productDelete = createAction(
   PRODUCT_DELETE,
   props<IProductsDelete>()
+);
+
+export const setCurrentProduct = createAction(
+  SET_CURRENT_PRODUCT,
+  props<ProductModel>()
+);
+
+export const buyProductRequest = createAction(
+  BUY_PRODUCT_REQUEST,
+  props<IBuyProduct>()
+);
+export const buyProduct = createAction(
+  BUY_PRODUCT,
+  props<IBuyProduct>()
 );

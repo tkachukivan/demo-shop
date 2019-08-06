@@ -6,6 +6,7 @@ import { RootComponent } from './pages/root/root.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginPageGuard } from './guards/login-page.guard';
 import { ProductsPageResolver } from './guards/products-page.resolver';
+import { ProductDetailsResolver } from './guards/product-details.resolver';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: ProductsListComponent },
-      { path: 'product/:id', component: ProductDetailsComponent }
+      { path: 'product/:id', component: ProductDetailsComponent, resolve: { product: ProductDetailsResolver } }
     ]
   },
   { path: 'login', component: LoginComponent, canActivate: [LoginPageGuard] },

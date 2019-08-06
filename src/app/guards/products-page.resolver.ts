@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { productsRequest, productsCategoriesRequest } from '../reducers/products/products.actions';
-import { take, tap, filter, map } from 'rxjs/operators';
+import { take, filter, map } from 'rxjs/operators';
 import { ProductFiltersModel } from '../models/product-filters.model';
 
 @Injectable({
@@ -13,23 +13,36 @@ export class ProductsPageResolver implements Resolve<boolean> {
   constructor(
     private store: Store<AppState>,
   ) {}
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
-    return this.store.select('products')
+    this.initLoading();
+
+    return this.waitForData();
+  }
+
+  initLoading() {
+    this.store.select('products')
       .pipe(
         take(1),
-        tap(({ productsLoaded, categoriesLoaded }) => {
-          if (!productsLoaded) {
-            this.store.dispatch(productsRequest(new ProductFiltersModel()));
-          }
-          if (!categoriesLoaded) {
-            this.store.dispatch(productsCategoriesRequest());
-          }
-        }),
+      ).subscribe(({ productsLoaded, categoriesLoaded }) => {
+        if (!productsLoaded) {
+          this.store.dispatch(productsRequest(new ProductFiltersModel()));
+        }
+        if (!categoriesLoaded) {
+          this.store.dispatch(productsCategoriesRequest());
+        }
+      });
+  }
+
+  waitForData() {
+    return this.store.select('products')
+      .pipe(
         filter(({ productsLoaded, categoriesLoaded }) => productsLoaded && categoriesLoaded),
-        map(({ productsLoaded, categoriesLoaded }) => productsLoaded && categoriesLoaded)
+        map(() => true),
+        take(1),
       );
   }
 }

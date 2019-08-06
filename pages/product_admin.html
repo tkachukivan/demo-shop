@@ -7,83 +7,7 @@
     <link rel="stylesheet" href="../public/style.css">
     <title>product admin</title>
 </head>
-<body>
-    <div class="container">
-        <header class="header-wrapper">
-            <div class="header page-container">
-                <h1 class="header__logo">
-                    <a href="../">
-                        <img src="../img/logo.svg" alt="logo">
-                    </a>
-                </h1>
-    
-                <div class="header__user">
-                    <div class="header__user-name">
-                        Hello, <span>John_Doe</span> 
-                    </div>
-                    <button class="header__user-logout"></button>
-                </div>
-            </div>
-        </header>
-        <main class="page-container page-container--main">
-            <nav class="product-nav">
-                <a href="./main.html" class="product-nav__link">Back</a>
-                <p class="product-nav__category">
-                    Category: <span>Man / Active wear</span>
-                </p>
-            </nav>
-            <div class="product-item product-item--extented-view ">
-                <div class="product-item__image-wrapper">
-                    <img src="../img/classic-close-up-clothes.jpg" class="product-item__image" alt="product-item-image"/>
-                  
-                    <div class="rating-wrapper">
-                        <div class="rating rating--5"></div>
-                    </div>
-                </div>
-                <div class="product-item__information-wrapper">
-                    <div>
-                        <h2 class="product-item__title">
-                            Active Coat Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.3
-                        </h2>
-                        <p class="product-item__description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam, libero 
-                            aliquid architecto ad quis maiores sit nulla officiis ex velit sapiente autem fugit 
-                            quam, qui reprehenderit veniam fugiat nemo exercitationem cum minus ipsa 
-                            consequuntur. Pariatur totam suscipit, voluptatibus laudantium.
-                        </p>
-                        <p class="product-item__description">
-                            You can
-                            <button class="button-link button-add">add 5 more</button>.
-                            You can also
-                            <button class="button-link button-edit">edit</button>
-                            details or
-                            <button class="button-link button-delete">delete</button>
-                            them.
-                        </p>
-                    </div>
-                    <div class="product-item__information">
-                        <div class="product-item__price">
-                            <span class="product-item__price-currency">$</span>47.95
-                            <span class="product-item__left">(9 items left)</span>
-                        </div>
-                        <button class="button button-buy">
-                            Buy
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <div class="modal-wrapper buy-modal">
-            <div class="modal">
-                <div class="modal__header">
-                    Thank you!
-                </div>
-                <div class="modal__body">You successfully purchased this item.</div>
-                <div class="modal__footer">
-                    <button class="button button--autosize button--big">Continue shopping</button>
-                </div>
-            </div>
-        </div>
+<body>       
         <div class="modal-wrapper delete-modal">
             <div class="modal">
                 <div class="modal__header">
@@ -98,6 +22,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="modal-wrapper edit-modal">
             <div class="modal">
                 <h3 class="modal__header">
@@ -180,10 +105,6 @@
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            Copyright “<a href="#">Demo Shop</a>”, 2017
-        </footer>
-    </div>
     <script src="../js/modals.js"></script>
 </body>
 </html>
