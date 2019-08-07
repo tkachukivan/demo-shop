@@ -15,6 +15,8 @@ export class ProductItemComponent implements OnInit {
   @HostBinding('class.product-item') cssClass = true;
   @HostBinding('class.product-item--extended-view') isExteded = false;
 
+  public isDeleteModalOpen = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -26,6 +28,13 @@ export class ProductItemComponent implements OnInit {
   }
 
   onDeleteProduct() {
-    this.deleteProduct.emit(this.product.id);
+    this.isDeleteModalOpen = true;
+  }
+
+  onDeleteModalClose(result) {
+    this.isDeleteModalOpen = false;
+    if (result) {
+      this.deleteProduct.emit(this.product.id);
+    }
   }
 }

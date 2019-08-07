@@ -1,0 +1,8 @@
+<app-modal [isOpen]="isOpen">
+  <ng-container header>Are you sure?</ng-container>
+  <ng-container body>You are trying to delete this product. Are you sure you want this?</ng-container>
+  <ng-container footer>
+    <button class="button button--secondary button--big" (click)="onCancel()">Cancel</button>
+    <button class="button button--big" (click)="onSubmit()">Submit</button>
+  </ng-container>
+</app-modal>

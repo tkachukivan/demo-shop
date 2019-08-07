@@ -26,6 +26,7 @@ export interface IProductsCategoriesLoaded {
 export interface IProductsDelete {
   productId: number;
   filters?: ProductFiltersModel;
+  fromProductDetailsPage?: boolean;
 }
 
 export interface IBuyProduct {
@@ -69,7 +70,7 @@ export const productDelete = createAction(
 
 export const setCurrentProduct = createAction(
   SET_CURRENT_PRODUCT,
-  props<ProductModel>()
+  props<{ product: ProductModel }>()
 );
 
 export const buyProductRequest = createAction(

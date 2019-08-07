@@ -4,32 +4,42 @@ import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/reducers';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductCategoryModel } from 'src/app/models/product-category.model';
-import { buyProductRequest } from 'src/app/reducers/products/products.actions';
+import { buyProductRequest, productDeleteRequest } from 'src/app/reducers/products/products.actions';
+import { Role } from 'src/app/enums';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  public storeSub: Subscription;
+  private storeProductsSub: Subscription;
+  private storeLoginSub: Subscription;
   public product: ProductModel;
   public productCategory: ProductCategoryModel;
   public isBuyProductModalOpen = false;
+  public isAdmin = false;
 
   constructor(
     private store: Store<AppState>,
   ) { }
 
   ngOnInit() {
-    this.storeSub = this.store.select('products')
+    this.storeProductsSub = this.store.select('products')
       .subscribe(({ currentProduct, categories }) => {
         this.product = currentProduct;
-        this.productCategory = categories.find(c => c.id === this.product.categoryId);
+        if (this.product && this.product.categoryId) {
+          this.productCategory = categories.find(c => c.id === this.product.categoryId);
+        }
+      });
+    this.storeLoginSub = this.store.select('login')
+      .subscribe(({ roleId }) => {
+        this.isAdmin = roleId === Role.Admin;
       });
   }
 
   ngOnDestroy() {
-    this.storeSub.unsubscribe();
+    this.storeProductsSub.unsubscribe();
+    this.storeLoginSub.unsubscribe();
   }
 
   onBuyProductClick() {
@@ -43,5 +53,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   onBuyProductModalClose() {
     this.isBuyProductModalOpen = false;
+  }
+
+  onProductDelete(productId: number) {
+    this.store.dispatch(productDeleteRequest( { productId, fromProductDetailsPage: true }));
   }
 }

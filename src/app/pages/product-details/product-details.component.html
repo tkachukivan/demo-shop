@@ -9,7 +9,10 @@
   [isExtendedView]="true"
   [isAdmin]="isAdmin"
   (buyProduct)="onBuyProductClick($event)"
+  (deleteProduct)="onProductDelete($event)"
 >
 </app-product-item>
 
 <app-buy-product-modal [isOpen]="isBuyProductModalOpen" (closeModal)="onBuyProductModalClose()"></app-buy-product-modal>
+
+<router-outlet></router-outlet>

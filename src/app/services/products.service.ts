@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProductFiltersModel } from '../models/product-filters.model';
 import { ProductModel } from '../models/product.model';
 import { API_ROOT, PRODUCTS, CATEGORIES } from '../constants/endpoints';
+import { ProductFilters } from '../enums';
 
 export interface IUpdateProduct {
   id: number;
@@ -34,16 +35,16 @@ export class ProductsService {
       }
 
       switch (filterName) {
-        case 'page':
+        case ProductFilters.Page:
           params = params.set('_page', String(filters.page));
           break;
-        case 'limit':
+        case ProductFilters.Limit:
           params = params.set('_limit', String(filters.limit));
           break;
-        case 'search':
+        case ProductFilters.Search:
           params = params.set('q', filters.search);
           break;
-        case 'cost':
+        case ProductFilters.Cost:
           if (filters.cost.from) {
             params = params.set(`${filterName}_gte`, String(filters.cost.from));
           }
@@ -53,7 +54,7 @@ export class ProductsService {
           }
 
           break;
-        case 'availableOnly':
+        case ProductFilters.Available:
           params = params.set('count_gte', String(1));
           break;
         default:

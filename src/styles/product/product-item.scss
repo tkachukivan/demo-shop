@@ -51,6 +51,18 @@
         @include background-img("trash.svg", 1.5rem 1.5rem, no-repeat, center);
         background-color: #288575;
     }
+
+    &__edit-button {
+        position: absolute;
+        right: 2.1rem;
+        top: 0;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        cursor: pointer;
+        @include background-img("edit.svg", 1.5rem 1.5rem, no-repeat, center);
+        background-color: #288575;
+    }
     
     &__image {
         width: 100%;

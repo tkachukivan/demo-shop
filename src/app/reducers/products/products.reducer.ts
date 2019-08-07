@@ -40,8 +40,9 @@ const productsReducer = createReducer(
     ...state,
     products: state.products.filter( p => p.id !== productId),
     total: state.total - 1,
+    currentProduct: null,
   })),
-  on(ProductsActions.setCurrentProduct, (state, product) => ({...state, currentProduct: product })),
+  on(ProductsActions.setCurrentProduct, (state, { product }) => ({...state, currentProduct: product })),
   on(ProductsActions.buyProduct, (state, { id, count, soldCount }) => ({
     ...state,
     products: state.products.map( p => {

@@ -29,8 +29,12 @@ export class InfiniteScrollDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   _onScroll() {
-    if (window.scrollY + document.documentElement.clientHeight + 50 > document.documentElement.scrollHeight) {
+    if (this.isEndOfPage()) {
       this.loadDocuments.emit();
     }
+  }
+
+  isEndOfPage() {
+    return window.scrollY + document.documentElement.clientHeight + 50 > document.documentElement.scrollHeight;
   }
 }

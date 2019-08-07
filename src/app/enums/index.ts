@@ -8,3 +8,11 @@ export enum Gender {
   Man = 'Man',
   Woman = 'Woman'
 }
+
+export enum ProductFilters {
+  Page = 'page',
+  Limit = 'limit',
+  Search = 'search',
+  Available = 'availableOnly',
+  Cost = 'cost'
+}

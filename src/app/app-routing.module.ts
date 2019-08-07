@@ -8,6 +8,8 @@ import { LoginPageGuard } from './guards/login-page.guard';
 import { ProductsPageResolver } from './guards/products-page.resolver';
 import { ProductDetailsResolver } from './guards/product-details.resolver';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { LOGIN, PRODUCT, EDIT_PRODUCT } from './constants/routes';
+import { EditProductModalComponent } from './pages/product-details/edit-product-modal/edit-product-modal.component';
 
 const routes: Routes = [
   {
@@ -19,10 +21,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: ProductsListComponent },
-      { path: 'product/:id', component: ProductDetailsComponent, resolve: { product: ProductDetailsResolver } }
+      {
+        path: PRODUCT,
+        component: ProductDetailsComponent,
+        resolve: { product: ProductDetailsResolver },
+        children: [
+          { path: EDIT_PRODUCT, component: EditProductModalComponent }
+        ]
+      }
     ]
   },
-  { path: 'login', component: LoginComponent, canActivate: [LoginPageGuard] },
+  { path: LOGIN, component: LoginComponent, canActivate: [LoginPageGuard] },
 ];
 
 @NgModule({

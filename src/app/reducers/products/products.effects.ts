@@ -9,6 +9,7 @@ import { ProductCategoryModel } from 'src/app/models/product-category.model';
 import { ProductFiltersModel } from 'src/app/models/product-filters.model';
 import { Action } from '@ngrx/store';
 import { ProductsService, IUpdateProduct } from 'src/app/services/products.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ProductsEffects {
@@ -52,6 +53,10 @@ export class ProductsEffects {
             if (!action.filters) {
               actions.pop();
             }
+
+            if (action.fromProductDetailsPage) {
+              this.router.navigate(['/']);
+            }
             return actions;
           }),
           catchError(this.errorHandler)
@@ -78,7 +83,8 @@ export class ProductsEffects {
 
   constructor(
     private actions$: Actions,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private router: Router,
   ) { }
 
   errorHandler(error) {

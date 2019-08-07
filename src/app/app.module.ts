@@ -17,9 +17,7 @@ import { LoginEffects } from './reducers/login/login.effects';
 import { ProductsEffects } from './reducers/products/products.effects';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { environment } from '../environments/environment';
-import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { InfiniteScrollDirective } from './directives/infinite-scroll.directive';
 import { SearchComponent } from './pages/products-list/search/search.component';
 import { FiltersComponent } from './pages/products-list/filters/filters.component';
 import { AvailabilityFilterComponent } from './pages/products-list/filters/availability-filter/availability-filter.component';
@@ -27,8 +25,9 @@ import { GenderFilterComponent } from './pages/products-list/filters/gender-filt
 import { CategoriesFilterComponent } from './pages/products-list/filters/categories-filter/categories-filter.component';
 import { RatingFilterComponent } from './pages/products-list/filters/rating-filter/rating-filter.component';
 import { PriceFilterComponent } from './pages/products-list/filters/price-filter/price-filter.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { BuyProductModalComponent } from './pages/product-details/buy-product-modal/buy-product-modal.component';
+import { SharedModule } from './shared/shared.module';
+import { EditProductModalComponent } from './pages/product-details/edit-product-modal/edit-product-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +35,7 @@ import { BuyProductModalComponent } from './pages/product-details/buy-product-mo
     LoginComponent,
     ProductsListComponent,
     RootComponent,
-    ProductItemComponent,
     ProductDetailsComponent,
-    InfiniteScrollDirective,
     SearchComponent,
     FiltersComponent,
     AvailabilityFilterComponent,
@@ -46,8 +43,8 @@ import { BuyProductModalComponent } from './pages/product-details/buy-product-mo
     CategoriesFilterComponent,
     RatingFilterComponent,
     PriceFilterComponent,
-    ModalComponent,
-    BuyProductModalComponent
+    BuyProductModalComponent,
+    EditProductModalComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +60,8 @@ import { BuyProductModalComponent } from './pages/product-details/buy-product-mo
       }
     }),
     EffectsModule.forRoot([LoginEffects, ProductsEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

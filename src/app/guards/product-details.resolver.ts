@@ -25,7 +25,7 @@ export class ProductDetailsResolver implements Resolve<Observable<boolean>> {
     const id = route.params.id;
 
     if (id === 'new') {
-      this.store.dispatch(setCurrentProduct(new ProductModel()));
+      this.store.dispatch(setCurrentProduct({ product: new ProductModel() }));
       return of(true);
     }
 
@@ -40,7 +40,7 @@ export class ProductDetailsResolver implements Resolve<Observable<boolean>> {
           return this.productsService.loadProductById(Number(id));
         }),
         tap((product) => {
-          this.store.dispatch(setCurrentProduct(product));
+          this.store.dispatch(setCurrentProduct({ product }));
         }),
         map(() => of(true))
       );
