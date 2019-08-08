@@ -6,7 +6,7 @@ import { ProductModel } from 'src/app/models/product.model';
 import { ProductCategoryModel } from 'src/app/models/product-category.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Gender } from 'src/app/enums';
+import { updateProductRequest, createProductRequest } from 'src/app/reducers/products/products.actions';
 
 @Component({
   selector: 'app-edit-product-modal',
@@ -18,8 +18,6 @@ export class EditProductModalComponent implements OnInit, OnDestroy {
   public categories: ProductCategoryModel[];
   public isNewProduct: boolean;
   public productForm: FormGroup;
-  public ratingValues = [1, 2, 3, 4, 5];
-  public genders = Object.values(Gender);
 
   constructor(
     private store: Store<AppState>,
@@ -42,20 +40,8 @@ export class EditProductModalComponent implements OnInit, OnDestroy {
     this.storeSub.unsubscribe();
   }
 
-  get productName() {
-    return this.productForm.get('name');
-  }
-
-  get productDescription() {
-    return this.productForm.get('description');
-  }
-
   getModalTitle() {
     return this.isNewProduct ? 'Create New Product' : `Edit ${this.product.name}`;
-  }
-
-  onImageLoadError() {
-    this.productForm.get('image').setErrors({ invalidLink: true });
   }
 
   initProductEditForm() {
@@ -72,9 +58,22 @@ export class EditProductModalComponent implements OnInit, OnDestroy {
 
   onCancel() {
     if (this.isNewProduct) {
-      this.router.navigate(['../../'], { relativeTo: this.route });
+      this.router.navigate(['/']);
     } else {
       this.router.navigate(['../'], { relativeTo: this.route });
     }
+  }
+
+  onProductSave() {
+    if (this.productForm.invalid) {
+      return;
+    }
+
+    if (this.isNewProduct) {
+      this.store.dispatch(createProductRequest({ product: { ...this.product, ...this.productForm.value } }));
+      return;
+    }
+
+    this.store.dispatch(updateProductRequest({ product: { id: this.product.id, ...this.productForm.value } }));
   }
 }

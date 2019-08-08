@@ -1,0 +1,12 @@
+<div [formGroup]="parent">
+  <label>Description:</label>
+  <textarea
+    rows="10"
+    class="text-field"
+    formControlName="description"
+    (change)="onDescriptionChanged()"
+    ></textarea>
+  <p *ngIf="description.errors?.required && description.touched" class="error-message">
+    Please provide product description.
+  </p>
+</div>

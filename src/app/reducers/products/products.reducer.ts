@@ -60,7 +60,24 @@ const productsReducer = createReducer(
       count,
       soldCount,
     }
-  }))
+  })),
+  on(ProductsActions.updateProduct, (state, { product }) => ({
+    ...state,
+    products: state.products.map( p => {
+      if (p.id === product.id) {
+        return {
+          ...p,
+          ...product,
+        };
+      }
+      return p;
+    }),
+    currentProduct: {
+      ...state.currentProduct,
+      ...product,
+    }
+  })),
+  on(ProductsActions.createProduct, (state, { product }) => ({ ...state, currentProduct: product }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

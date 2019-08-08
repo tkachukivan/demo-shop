@@ -1,0 +1,10 @@
+<label>Gender:</label>
+<div class="radio-buttons-wrapper" [formGroup]="parent">
+  <div *ngFor="let gender of genders">
+    <input type="radio" id="gender-{{gender}}" class="radio-button__input" formControlName="gender" [value]="gender">
+    <label for="gender-{{gender}}" class="radio-button__label">{{gender}}</label>
+  </div>
+</div>
+<p *ngIf="gender.errors?.required && gender.touched" class="error-message">
+  Please choose product gender.
+</p>

@@ -18,8 +18,8 @@ export class RatingFilterComponent implements OnInit, OnDestroy {
       (value) => {
         if (value > 5) {
           this.rating.setValue(5);
-        } else if (value !== null && value < 1) {
-          this.rating.setValue(1);
+        } else if (value !== null && value < 0) {
+          this.rating.setValue(0);
         }
       }
     );

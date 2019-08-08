@@ -1,0 +1,11 @@
+<div [formGroup]="parent">
+  <label>Category:</label>
+  <div class="select-wrapper select-wrapper--white">
+    <select class="select" formControlName="categoryId">
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </div>
+  <p *ngIf="category.errors?.required && category.touched" class="error-message">
+    You need to choose product category.
+  </p>
+</div>

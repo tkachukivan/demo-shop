@@ -27,7 +27,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.storeProductsSub = this.store.select('products')
       .subscribe(({ currentProduct, categories }) => {
         this.product = currentProduct;
-        if (this.product && this.product.categoryId) {
+        if (this.product) {
           this.productCategory = categories.find(c => c.id === this.product.categoryId);
         }
       });

@@ -1,0 +1,12 @@
+<div [formGroup]="parent">
+  <label for="product-name">Name:</label>
+  <input
+    type="text"
+    class="text-field"
+    id="product-name"
+    formControlName="name"
+    (change)="onNameChanged()">
+  <p *ngIf="productName.errors?.required && productName.touched" class="error-message">
+    Please provide product name.
+  </p>
+</div>

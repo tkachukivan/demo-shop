@@ -77,9 +77,10 @@ export class ProductsService {
     );
   }
 
-  deleteProduct(productId: number) {
-    return this.http.delete(
-      `${API_ROOT}${PRODUCTS}/${productId}`
+  createProduct(product: ProductModel) {
+    return this.http.post(
+      `${API_ROOT}${PRODUCTS}`,
+      product
     );
   }
 
@@ -87,6 +88,12 @@ export class ProductsService {
     return this.http.patch<ProductModel>(
       `${API_ROOT}${PRODUCTS}/${product.id}`,
       product
+    );
+  }
+
+  deleteProduct(productId: number) {
+    return this.http.delete(
+      `${API_ROOT}${PRODUCTS}/${productId}`
     );
   }
 

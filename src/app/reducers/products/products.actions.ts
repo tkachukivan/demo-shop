@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductFiltersModel } from 'src/app/models/product-filters.model';
 import { ProductCategoryModel } from 'src/app/models/product-category.model';
+import { IUpdateProduct } from 'src/app/services/products.service';
 
 export const PRODUCTS_REQUEST = '[Products Page] Products Request';
 export const PRODUCTS_LOADED = '[Products Page] Products Loaded';
@@ -13,6 +14,10 @@ export const PRODUCT_DELETE = '[Products Page] Products Delete';
 export const SET_CURRENT_PRODUCT = '[Product Details Page] Set Current Product';
 export const BUY_PRODUCT_REQUEST = '[Product Details Page] Buy Product Request';
 export const BUY_PRODUCT = '[Product Details Page] Buy Product';
+export const CREATE_PRODUCT_REQUEST = '[Product Details Page] Create Product Request';
+export const CREATE_PRODUCT = '[Product Details Page] Create Product';
+export const UPDATE_PRODUCT_REQUEST = '[Product Details Page] Update Product Request';
+export const UPDATE_PRODUCT = '[Product Details Page] Update Product';
 
 export interface IProductsLoaded {
   products: ProductModel[];
@@ -80,4 +85,22 @@ export const buyProductRequest = createAction(
 export const buyProduct = createAction(
   BUY_PRODUCT,
   props<IBuyProduct>()
+);
+
+export const updateProductRequest = createAction(
+  UPDATE_PRODUCT_REQUEST,
+  props<{ product: IUpdateProduct }>()
+);
+export const updateProduct = createAction(
+  UPDATE_PRODUCT,
+  props<{ product: IUpdateProduct }>()
+);
+
+export const createProductRequest = createAction(
+  CREATE_PRODUCT_REQUEST,
+  props<{ product: ProductModel }>()
+);
+export const createProduct = createAction(
+  CREATE_PRODUCT,
+  props<{ product: ProductModel }>()
 );

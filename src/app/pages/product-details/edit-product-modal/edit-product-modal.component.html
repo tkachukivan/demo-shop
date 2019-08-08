@@ -1,72 +1,44 @@
 <app-modal [isOpen]="true">
   <ng-container header>
-      {{ getModalTitle() }}
+    {{ getModalTitle() }}
   </ng-container>
   <ng-container body>
-    <form class="product-edit-modal" [formGroup]="productForm">
-        <div>
-            <section class="product-edit-modal-section">
-              <label for="product-name">Name:</label>
-              <input type="text" class="text-field" id="product-name" formControlName="name">
-            </section>
-    
-            <section class="product-edit-modal-section">
-              <label>Category:</label>
-              <div class="select-wrapper select-wrapper--white">
-                <select class="select" formControlName="categoryId">
-                  <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-                </select>
-              </div>
-            </section>
-    
-            <section class="product-edit-modal-section">
-              <label>Gender:</label>
-              <div class="radio-buttons-wrapper">
-                <div *ngFor="let gender of genders">
-                  <input type="radio"
-                    id="gender-{{gender}}"
-                    class="radio-button__input"
-                    formControlName="gender"
-                    [value]="gender"
-                    >
-                  <label for="gender-{{gender}}" class="radio-button__label">{{gender}}</label>
-                </div>
-              </div>
-            </section>
-    
-            <section class="product-edit-modal-section">
-              <label>Description:</label>
-              <textarea rows="10" class="text-field" formControlName="description"></textarea>
-            </section>
-          </div>
-    
-          <div>
-            <section class="product-edit-modal-section">
-              <div>
-                <label for="product-name">Link to image:</label>
-                <input type="text" class="text-field" id="product-name" formControlName="image">
-              </div>
-            </section>
-            <section class="product-edit-modal-section">
-              <img width="100%" [src]="productForm.value.image" alt="clothes" (error)="onImageLoadError()">
-            </section>
-            <section class="product-edit-modal-section">
-              <label for="product-name">Price:</label>
-              <input type="number" class="text-field" id="product-name" formControlName="cost">
-            </section>
-            <section class="product-edit-modal-section">
-              <label>Rating:</label>
-              <div class="select-wrapper select-wrapper--white">
-                <select class="select" formControlName="rating">
-                  <option *ngFor="let r of ratingValues" [value]="r">{{r}}</option>
-                </select>
-              </div>
-            </section>
-          </div>
-        </form>
+    <form class="product-edit-modal" [formGroup]="productForm" (submit)="onProductSave()">
+      <div>
+        <app-edit-name
+          [parent]="productForm"
+        ></app-edit-name>
+
+        <app-edit-category
+          [parent]="productForm"
+          [categories]="categories"
+        ></app-edit-category>
+
+        <app-edit-gender
+          [parent]="productForm"
+        ></app-edit-gender>
+
+        <app-edit-description
+          [parent]="productForm"
+        ></app-edit-description>
+      </div>
+
+      <div>
+        <app-edit-image
+          [parent]="productForm"
+        ></app-edit-image>
+
+        <app-edit-price
+          [parent]="productForm"
+        ></app-edit-price>
+        <app-edit-rating
+          [parent]="productForm"
+        ></app-edit-rating>
+      </div>
+    </form>
   </ng-container>
   <ng-container footer>
-      <button class="button button--secondary button--big" (click)="onCancel()">Cancel</button>
-      <button class="button button--big" [disabled]="productForm.invalid">Submit</button>
+    <button class="button button--secondary button--big" (click)="onCancel()">Cancel</button>
+    <button class="button button--big" [disabled]="productForm.invalid" (click)="onProductSave()">Submit</button>
   </ng-container>
 </app-modal>

@@ -18,8 +18,9 @@
         border-color: #9CC3BC;
     }
 
-    &:invalid.ng-touched {
-        border-color: #ff0000;
+    &:invalid.ng-touched,
+    &.ng-invalid.ng-touched {
+        border-color: $error;
     }
 
     &--number {

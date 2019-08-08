@@ -1,0 +1,9 @@
+<label>Rating:</label>
+<div class="select-wrapper select-wrapper--white" [formGroup]="parent">
+  <select class="select" formControlName="rating">
+    <option *ngFor="let r of ratingValues" [value]="r">{{r}}</option>
+  </select>
+  <p *ngIf="rating.errors?.required && rating.touched" class="error-message">
+    Please provide product rating.
+  </p>
+</div>

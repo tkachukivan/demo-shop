@@ -9,7 +9,9 @@ import { ProductCategoryModel } from 'src/app/models/product-category.model';
 import { ProductFiltersModel } from 'src/app/models/product-filters.model';
 import { Action } from '@ngrx/store';
 import { ProductsService, IUpdateProduct } from 'src/app/services/products.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { ProductModel } from 'src/app/models/product.model';
 
 @Injectable()
 export class ProductsEffects {
@@ -64,14 +66,11 @@ export class ProductsEffects {
     }),
   ));
 
-  buyProductsRequest$ = createEffect(() => this.actions$.pipe(
+  buyProductRequest$ = createEffect(() => this.actions$.pipe(
     ofType(ProductsActions.BUY_PRODUCT_REQUEST),
-    switchMap((action: IUpdateProduct) => {
-      const fieldsToUpdate = {
-        id: action.id,
-        count: action.count,
-        soldCount: action.soldCount,
-      };
+    switchMap((action: ProductsActions.IBuyProduct & Action) => {
+      const fieldsToUpdate = { ...action };
+      delete fieldsToUpdate.type;
 
       return this.productService.updateProduct(fieldsToUpdate)
         .pipe(
@@ -81,10 +80,39 @@ export class ProductsEffects {
     })
   ));
 
+  updateProductRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(ProductsActions.UPDATE_PRODUCT_REQUEST),
+    switchMap((action: { product: IUpdateProduct }) => {
+      return this.productService.updateProduct(action.product)
+        .pipe(
+          map(() => {
+            this.location.back();
+            return ProductsActions.updateProduct({ product: action.product } );
+          }),
+          catchError(this.errorHandler)
+        );
+    })
+  ));
+
+  createProductRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(ProductsActions.CREATE_PRODUCT_REQUEST),
+    switchMap((action: { product: ProductModel }) => {
+      return this.productService.createProduct(action.product)
+        .pipe(
+          map((product: ProductModel) => {
+            this.router.navigate(['/product', product.id]);
+            return ProductsActions.createProduct({ product });
+          }),
+          catchError(this.errorHandler)
+        );
+    })
+  ));
+
   constructor(
     private actions$: Actions,
     private productService: ProductsService,
     private router: Router,
+    private location: Location
   ) { }
 
   errorHandler(error) {

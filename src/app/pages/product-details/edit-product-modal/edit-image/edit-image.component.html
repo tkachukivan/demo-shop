@@ -1,0 +1,11 @@
+<div [formGroup]="parent" class="product-edit-modal-section">
+  <label for="product-name">Link to image:</label>
+  <input type="text" class="text-field" id="product-name" formControlName="image">
+</div>
+<p *ngIf="image.errors?.required && image.touched" class="error-message">
+  Please enter image link.
+</p>
+<p *ngIf="image.errors?.invalidLink" class="error-message">
+  Provided link is invalid please enter correct image link.
+</p>
+<img width="100%" [src]="parent.value.image" alt="clothes" (error)="onImageLoadError()">

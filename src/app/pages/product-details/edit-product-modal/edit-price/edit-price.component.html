@@ -1,0 +1,7 @@
+<div [formGroup]="parent">
+  <label for="product-name">Price:</label>
+  <input type="number" class="text-field" id="product-name" formControlName="cost" min="0">
+  <p *ngIf="price.errors?.required && price.touched" class="error-message">
+    Please specify product price.
+  </p>
+</div>
