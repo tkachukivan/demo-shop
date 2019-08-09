@@ -19,12 +19,14 @@ import { environment } from '../environments/environment';
 import { SharedModule } from './shared/shared.module';
 import { ProductDetailsModule } from './pages/product-details/product-details.module';
 import { ProductsListModule } from './pages/products-list/products-list.module';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RootComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

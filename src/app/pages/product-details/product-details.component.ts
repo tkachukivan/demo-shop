@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/reducers';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductCategoryModel } from 'src/app/models/product-category.model';
-import { buyProductRequest, productDeleteRequest } from 'src/app/reducers/products/products.actions';
+import { buyProductRequest, productDeleteRequest, updateProductCountRequest } from 'src/app/reducers/products/products.actions';
 import { Role } from 'src/app/enums';
 
 @Component({
@@ -57,5 +57,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   onProductDelete(productId: number) {
     this.store.dispatch(productDeleteRequest( { productId, fromProductDetailsPage: true }));
+  }
+
+  onCountUpdate(count: number) {
+    this.store.dispatch(updateProductCountRequest({ product: { id: this.product.id, count } }));
   }
 }

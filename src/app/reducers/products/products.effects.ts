@@ -80,6 +80,20 @@ export class ProductsEffects {
     })
   ));
 
+  createProductRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(ProductsActions.CREATE_PRODUCT_REQUEST),
+    switchMap((action: { product: ProductModel }) => {
+      return this.productService.createProduct(action.product)
+        .pipe(
+          map((product: ProductModel) => {
+            this.router.navigate(['/product', product.id]);
+            return ProductsActions.createProduct({ product });
+          }),
+          catchError(this.errorHandler)
+        );
+    })
+  ));
+
   updateProductRequest$ = createEffect(() => this.actions$.pipe(
     ofType(ProductsActions.UPDATE_PRODUCT_REQUEST),
     switchMap((action: { product: IUpdateProduct }) => {
@@ -94,14 +108,13 @@ export class ProductsEffects {
     })
   ));
 
-  createProductRequest$ = createEffect(() => this.actions$.pipe(
-    ofType(ProductsActions.CREATE_PRODUCT_REQUEST),
-    switchMap((action: { product: ProductModel }) => {
-      return this.productService.createProduct(action.product)
+  updateProductCountRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(ProductsActions.UPDATE_PRODUCT_COUNT_REQUEST),
+    switchMap((action: { product: IUpdateProduct }) => {
+      return this.productService.updateProduct(action.product)
         .pipe(
-          map((product: ProductModel) => {
-            this.router.navigate(['/product', product.id]);
-            return ProductsActions.createProduct({ product });
+          map(() => {
+            return ProductsActions.updateProduct({ product: action.product } );
           }),
           catchError(this.errorHandler)
         );

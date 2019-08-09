@@ -10,6 +10,7 @@ import { ProductDetailsResolver } from './guards/product-details.resolver';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { LOGIN, PRODUCT, EDIT_PRODUCT } from './constants/routes';
 import { EditProductModalComponent } from './pages/product-details/edit-product-modal/edit-product-modal.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
     ]
   },
   { path: LOGIN, component: LoginComponent, canActivate: [LoginPageGuard] },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

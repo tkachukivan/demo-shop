@@ -1,0 +1,21 @@
+<header class="header-wrapper">
+	<div class="header page-container">
+		<h1 class="header__logo">
+			<a routerLink="/">
+				<img src="assets/logo.svg" alt="">
+			</a>
+		</h1>
+
+		<div class="header__user" *ngIf="userName">
+			<div class="header__user-name">
+				Hello, <span>{{userName}}</span>
+			</div>
+			<button class="header__user-logout" (click)="onLogoutClick()"></button>
+		</div>
+		<div *ngIf="!userName">
+				<a routerLink="/login">
+					Login
+				</a>
+		</div>
+	</div>
+</header>

@@ -51,6 +51,11 @@
         cursor: pointer;
         @include background-img("header-logout.svg", contain);
     }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
 }
 
 .footer {

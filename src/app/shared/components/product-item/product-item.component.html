@@ -15,26 +15,37 @@
       {{product?.description}}
     </p>
   </div>
-  <div class="product-item__information">
-    <ng-container *ngIf="isExtendedView; then extendedView; else shortView"></ng-container>
-
-    <ng-template #shortView>
-      <div class="product-item__price">
-        <span class="product-item__price-currency">$</span>{{product?.cost}}
-      </div>
-      <a [routerLink]="['/product', product.id]" class="button">
-        Show more
-      </a>
-    </ng-template>
-    <ng-template #extendedView>
-      <div class="product-item__price">
-        <span class="product-item__price-currency">$</span>{{product?.cost}}
-        <span class="product-item__left">({{product?.count}} items left)</span>
-      </div>
-      <button class="button button-buy" [disabled]="!product?.count" (click)="onBuyProductClick()">
-        Buy
-      </button>
-    </ng-template>
+  <div>
+    <form
+      *ngIf="isExtendedView && isAdmin"
+      class="product-item__update-count"
+      [formGroup]="updateCountForm"
+      (submit)="updateCount()"
+      >
+      <input type="number" class="text-field" min="0" formControlName="count">
+      <button class="button">Update count</button>
+    </form>
+    <div class="product-item__information">
+      <ng-container *ngIf="isExtendedView; then extendedView; else shortView"></ng-container>
+  
+      <ng-template #shortView>
+        <div class="product-item__price">
+          <span class="product-item__price-currency">$</span>{{product?.cost}}
+        </div>
+        <a [routerLink]="['/product', product.id]" class="button">
+          Show more
+        </a>
+      </ng-template>
+      <ng-template #extendedView>
+        <div class="product-item__price">
+          <span class="product-item__price-currency">$</span>{{product?.cost}}
+          <span class="product-item__left">({{product?.count}} items left)</span>
+        </div>
+        <button class="button button-buy" [disabled]="!product?.count" (click)="onBuyProductClick()">
+          Buy
+        </button>
+      </ng-template>
+    </div>
   </div>
 </div>
 

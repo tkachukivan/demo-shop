@@ -71,7 +71,6 @@ export class EditProductModalComponent implements OnInit, OnDestroy {
 
     if (this.isNewProduct) {
       this.store.dispatch(createProductRequest({ product: { ...this.product, ...this.productForm.value } }));
-      return;
     }
 
     this.store.dispatch(updateProductRequest({ product: { id: this.product.id, ...this.productForm.value } }));

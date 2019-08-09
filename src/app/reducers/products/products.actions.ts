@@ -18,6 +18,7 @@ export const CREATE_PRODUCT_REQUEST = '[Product Details Page] Create Product Req
 export const CREATE_PRODUCT = '[Product Details Page] Create Product';
 export const UPDATE_PRODUCT_REQUEST = '[Product Details Page] Update Product Request';
 export const UPDATE_PRODUCT = '[Product Details Page] Update Product';
+export const UPDATE_PRODUCT_COUNT_REQUEST = '[Product Details Page] Update Product Count Request';
 
 export interface IProductsLoaded {
   products: ProductModel[];
@@ -87,20 +88,27 @@ export const buyProduct = createAction(
   props<IBuyProduct>()
 );
 
+export const createProductRequest = createAction(
+  CREATE_PRODUCT_REQUEST,
+  props<{ product: ProductModel }>()
+);
+
+export const createProduct = createAction(
+  CREATE_PRODUCT,
+  props<{ product: ProductModel }>()
+);
+
 export const updateProductRequest = createAction(
   UPDATE_PRODUCT_REQUEST,
   props<{ product: IUpdateProduct }>()
 );
+
 export const updateProduct = createAction(
   UPDATE_PRODUCT,
   props<{ product: IUpdateProduct }>()
 );
 
-export const createProductRequest = createAction(
-  CREATE_PRODUCT_REQUEST,
-  props<{ product: ProductModel }>()
-);
-export const createProduct = createAction(
-  CREATE_PRODUCT,
-  props<{ product: ProductModel }>()
+export const updateProductCountRequest = createAction(
+  UPDATE_PRODUCT_COUNT_REQUEST,
+  props<{ product: IUpdateProduct }>()
 );
