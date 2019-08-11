@@ -1,10 +1,19 @@
-# ANGULARItkachuk
+# Demo Shop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Server
+This server use under the hood [json-server](https://github.com/typicode/json-server), so please check its documentation for more information.
+
+## Deploy
+App is deployed to heroku by [link](https://infinite-temple-95379.herokuapp.com).
+There is two kind of users(admin and user).
+Admin - login: frank; password: frank123
+User - login: stan; password: stan123
 
 ## Code scaffolding
 
